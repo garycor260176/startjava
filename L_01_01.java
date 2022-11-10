@@ -25,4 +25,5 @@ public class L_01_01 {
         System.out.println("Что-то наличиствует? " + any_exist);
         System.out.println("Просто буква: '" + symbol + "'");
     }
+
 }
