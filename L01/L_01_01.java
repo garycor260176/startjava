@@ -1,3 +1,4 @@
+//Переменные: примитивные типы данных
 public class L_01_01 {    
 
     public static void main(String[] args) {
