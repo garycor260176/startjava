@@ -72,9 +72,9 @@ public class VariablesTheme {
         int num2 = 5;
         System.out.println("Перестановка с помощью третьей переменной: ");
         System.out.println(" значения ДО перестановки: " + num1 + ", " + num2);
-        int tmpNumNum = num1;
+        int tmpNum = num1;
         num1 = num2;
-        num2 = tmpNumNum;
+        num2 = tmpNum;
         System.out.println(" значения ПОСЛЕ перестановки: " + num1 + ", " + num2 + "\n");
         System.out.println("Перестановка с помощью арифметических операций: ");
         System.out.println(" значения ДО перестановки: " + num1 + ", " + num2);
