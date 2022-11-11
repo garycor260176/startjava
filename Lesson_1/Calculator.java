@@ -24,7 +24,7 @@ public class Calculator {
             result = num1 % num2;
         }
 
-        System.out.printf("%d %s %d = %f%n", num1, sign, num2, result);
+        System.out.printf("%d %c %d = %f%n", num1, sign, num2, result);
     }   
 
 }
