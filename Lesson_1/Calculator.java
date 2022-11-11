@@ -7,20 +7,20 @@ public class Calculator {
         int num2 = 12;
         double result = 0;
 
-        if(sign =='+'){
+        if(sign == '+'){
             result = num1 + num2;
-        } else if(sign =='-'){
+        } else if(sign == '-'){
             result = num1 - num2;
-        } else if(sign =='*'){
+        } else if(sign == '*'){
             result = num1 * num2;
-        } else if(sign =='/'){
+        } else if(sign == '/'){
             result = (double) num1 / (double) num2;
-        } else if(sign =='^'){
+        } else if(sign == '^'){
             result = 1.0f;
             for(int i=1; i<=num2; i++){
                 result *= (double) num1;
             }
-        } else if(sign =='%'){
+        } else if(sign == '%'){
             result = num1 % num2;
         }
 
