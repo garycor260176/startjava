@@ -18,10 +18,9 @@ public class CyclesTheme {
         }
         while(startNum <= endNum);
         System.out.println("в промежутке [-10, 21] сумма четных чисел = " + sumOdd + 
-                           ", а нечетных = " + sumEven);    
-        System.out.println("");
+                ", а нечетных = " + sumEven);    
 
-        System.out.println("02. Вывод чисел в интервале (min и max) в порядке убывания");
+        System.out.println("\n02. Вывод чисел в интервале (min и max) в порядке убывания");
         int num1 = 10;
         int num2 = 5;
         int num3 = -1;
@@ -37,9 +36,8 @@ public class CyclesTheme {
             if(i<maxNum) System.out.print(", ");
             System.out.print(i);
         }
-        System.out.println("\n");
 
-        System.out.println("03. Вывод реверсивного числа и суммы его цифр");
+        System.out.println("\n\n03. Вывод реверсивного числа и суммы его цифр");
         int num = 1234;
         int numReverse = num;
         int sum = 0;
@@ -52,9 +50,8 @@ public class CyclesTheme {
         }
         System.out.println();
         System.out.println("сумма его цифр: " + sum);
-        System.out.println("");
 
-        System.out.println("04. Вывод чисел на консоль в несколько строк");
+        System.out.println("\n04. Вывод чисел на консоль в несколько строк");
         int column = 0;
         for(int i=1; i<24;i+=2) {
             column++;
@@ -68,28 +65,25 @@ public class CyclesTheme {
             System.out.printf("%5s", 0);
             column--;
         }
-        System.out.println("\n");
 
-        System.out.println("05. Проверка количества единиц на четность");
+        System.out.println("\n05. Проверка количества единиц на четность");
         num = 3242592;
-        int tmp = num;
-        System.out.print("число " + num + " содержит ");
         int count = 0;
+        int tmp = num;
         while(tmp> 0) {
             int lastNum = tmp % 10;
             if(lastNum == 2) count++;
             tmp /= 10;
         }
-        System.out.print(count);
+        System.out.print("число " + num + " содержит " + count);
         if(count % 2 == 0) {
             System.out.print(" (четное) ");
         } else {
             System.out.print(" (нечетное) ");
         }
         System.out.println("количество двоек");
-        System.out.println("");
 
-        System.out.println("06. Отображение фигур в консоли");
+        System.out.println("\n06. Отображение фигур в консоли");
         for(int i=0; i<5; i++) System.out.println("**********");
         int i=5;
         while(i > 0) {
@@ -104,9 +98,8 @@ public class CyclesTheme {
             System.out.printf("%1." + j + "s%n", "$$$");
             i++;
         } while(i<5);
-        System.out.println("");
 
-        System.out.println("07. Отображение ASCII-символов");
+        System.out.println("\n07. Отображение ASCII-символов");
         System.out.printf("%5s | %5s%n", "Dec", "Char");
         for(i=0; i<=47; i++){
             if(i%2 != 0){
@@ -118,9 +111,8 @@ public class CyclesTheme {
                 System.out.printf("%5s | %5c%n", i, (char) i);
             }
         }
-        System.out.println("");
 
-        System.out.println("08. Проверка, является ли число палиндромом");
+        System.out.println("\n08. Проверка, является ли число палиндромом");
         int srcNum = 1234321;
         int revNum = 0;
         num = srcNum;
@@ -133,9 +125,8 @@ public class CyclesTheme {
         if(revNum == srcNum) {
             System.out.println("число " + srcNum + " является палиндромом");
         }
-        System.out.println("");
 
-        System.out.println("09. Определение, является ли число счастливым");
+        System.out.println("\n09. Определение, является ли число счастливым");
         num = srcNum = 152332;
         int leftPart = num / 1000;
         int rightPart = num % 1000;
@@ -177,6 +168,5 @@ public class CyclesTheme {
             }
             System.out.println("");
         }
-        System.out.println("");
     }   
 }
