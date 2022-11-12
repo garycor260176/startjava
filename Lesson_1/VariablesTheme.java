@@ -11,7 +11,7 @@ public class VariablesTheme {
         long totalMemory = Runtime.getRuntime().totalMemory();
         String archName = System.getProperties().getProperty ("os.arch");
         float cpuFreq = 3.2f;
-        double anyCharacteristic = 4.56;
+        double anyCharacteristic = 4.56d;
         System.out.println("(int)availableProcessors = " + availableProcessors);
         System.out.println("(byte)availableProcessors = " + quantityCoolers);
         System.out.println("(short)availableProcessors = " + quantityMonitors);

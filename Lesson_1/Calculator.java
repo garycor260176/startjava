@@ -7,7 +7,7 @@ public class Calculator {
         char sign = '^';
         int num1 = 14;
         int num2 = 12;
-        double result = 0;
+        double result = 0.0d;
 
         if(sign == '+'){
             result = num1 + num2;
