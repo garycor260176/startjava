@@ -2,6 +2,8 @@
 public class Calculator {    
 
     public static void main(String[] args) {
+        System.out.println("Калькулятор”");
+
         char sign = '^';
         int num1 = 14;
         int num2 = 12;
