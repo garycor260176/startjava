@@ -2,7 +2,6 @@
 public class IfElseStatementTheme {    
 
     public static void main(String[] args) {
-        //======== 01
         System.out.println("01. Перевод псевдокода на язык Java");
         int age = 100;
         boolean sex = true;
@@ -23,46 +22,45 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("рост: выше или равен 1.90");
         }
-        char firstSymInName = name.charAt(0);
-        if(firstSymInName == 'M') {
+        char firstSymName = name.charAt(0);
+        if(firstSymName == 'M') {
             System.out.println("Первая буква в имени 'M'");
-        } else if (firstSymInName == 'I') {
+        } else if (firstSymName == 'I') {
             System.out.println("Первая буква в имени 'I'");
         } else {
             System.out.println("Первая буква в имени не 'M' и не 'I'");
         }
         System.out.println("");
 
-        //======== 02
         System.out.println("02. Поиск max и min числа");
         int num1 = 100;
         int num2 = 200;
         if(num1 > num2) {
-            System.out.println("num1 = " + num1 + "(максимальное)" + ", num2 = " + num2 + "(минимальное)");
+            System.out.println("num1 = " + num1 + "(максимальное)" + ", num2 = " + num2 + 
+                               "(минимальное)");
         } else if(num1 < num2) {
-            System.out.println("num1 = " + num1 + "(минимальное)" + ", num2 = " + num2 + "(максимальное)");
+            System.out.println("num1 = " + num1 + "(минимальное)" + ", num2 = " + num2 + 
+                               "(максимальное)");
         } else {
             System.out.println("num1 = " + num1 + ", num2 = " + num2 + ". Числа равны.");
         }
-
         if(num1 == num2) {
             System.out.println(num1 + " = " + num2);
         }
         System.out.println("");
 
-        //======== 03
         System.out.println("03. Работа с числом");
-        num1 = 300;
-        System.out.print("Заданное число " + num1 + " ");
-        if(num1 == 0){
+        int num = 300;
+        System.out.print("Заданное число " + num + " ");
+        if(num == 0){
             System.out.println("является нулем.");
         } else {
-            if(num1 % 2 == 0) {
+            if(num % 2 == 0) {
                 System.out.print("является четным ");
             } else {
                 System.out.print("является нечетным ");
             }
-            if(num1 > 0) {
+            if(num > 0) {
                 System.out.println("и положительным");
             } else {
                 System.out.println("и отрицательным");
@@ -70,27 +68,30 @@ public class IfElseStatementTheme {
         }
         System.out.println("");
 
-        //======== 04
         System.out.println("04. Поиск одинаковых цифр в числах");
         num1 = 143;
         num2 = 163;
         System.out.println("Заданные числа: " + num1 + " и " + num2);
-        int hundredsOfnum1 = num1 / 100;
-        num1 = num1 % 100;
-        int hundredsOfnum2 = num2 / 100;
-        num2 = num2 % 100;
-        int dozensOfnum1 = num1 / 10;
-        num1 = num1 % 10;
-        int dozensOfnum2 = num2 / 10;
-        num2 = num2 % 10;
+        int unitsOfnum1 = num1;
+        int hundredsOfnum1 = unitsOfnum1 / 100;
+        unitsOfnum1 %= 100;
+        int tensOfnum1 = unitsOfnum1 / 10;
+        unitsOfnum1 %= 10;
+
+        int unitsOfnum2 = num2;
+        int hundredsOfnum2 = unitsOfnum2 / 100;
+        unitsOfnum2 %= 100;
+        int tensOfnum2 = unitsOfnum2 / 10;
+        unitsOfnum2 %= 10;
+
         boolean flagEQ = false;
-        if(num1 == num2) {
+        if(unitsOfnum1 == unitsOfnum2) {
             flagEQ = true;
-            System.out.println("совпадает цифра в первом разряде: " + num1);
+            System.out.println("совпадает цифра в первом разряде: " + unitsOfnum1);
         }
-        if(dozensOfnum1 == dozensOfnum2) {
+        if(tensOfnum1 == tensOfnum2) {
             flagEQ = true;
-            System.out.println("совпадает цифра во втором разряде: " + dozensOfnum1);
+            System.out.println("совпадает цифра во втором разряде: " + tensOfnum1);
         }
         if(hundredsOfnum1 == hundredsOfnum2) {
             flagEQ = true;
@@ -101,7 +102,6 @@ public class IfElseStatementTheme {
         }
         System.out.println("");
 
-        //======== 05
         System.out.println("05. Определение буквы, числа или символа по их коду");
         char symbol = '\u0057';
         System.out.println("Задан код символа: '" + symbol + "'");
@@ -117,24 +117,22 @@ public class IfElseStatementTheme {
         }
         System.out.println("");
 
-        //======== 06
         System.out.println("06. Определение суммы вклада и начисленных банком %");
-        float summ = 300000.0f;
-        System.out.println("сумма вклада: " + summ);
+        float sum = 300000.0f;
+        System.out.println("сумма вклада: " + sum);
         System.out.print("начисленный %: ");
-        float procent;
-        if(summ < 100000.0f) {
-            procent = summ * 0.05f;
-        } else if(summ >= 100000.0f && summ <= 300000.0f) {
-            procent = summ * 0.07f;
+        float interestAmount;
+        if(sum < 100000.0f) {
+            interestAmount = sum * 0.05f;
+        } else if(sum >= 100000.0f && sum <= 300000.0f) {
+            interestAmount = sum * 0.07f;
         } else {
-            procent = summ * 0.1f;
+            interestAmount = sum * 0.1f;
         }
-        System.out.println(procent);
-        System.out.println("итоговая сумму с %: " + (summ + procent));
+        System.out.println(interestAmount);
+        System.out.println("итоговая сумму с %: " + (sum + interestAmount));
         System.out.println("");
 
-        //======== 07
         System.out.println("07. Определение оценки по предметам");
         int history = 59;
         int programming = 91;
@@ -160,11 +158,11 @@ public class IfElseStatementTheme {
             programmingScore = 5;
         }
         System.out.println("Программирование: оценка - " + programmingScore);
-        System.out.println("средний балл оценок по предметам: " + (historyScore + programmingScore)/2);
-        System.out.println("средний балл оценок по предметам: " + (historyScore + programmingScore)/2);
+        System.out.println("средний балл оценок по предметам: " + 
+                           (historyScore + programmingScore)/2);
         System.out.println("средний % по предметам: " + (history + programming)/2);
+        System.out.println("");
 
-        //======== 08
         System.out.println("08. Расчет прибыли");
         float rent = 5000.0f;
         float sale = 13000.0f;
@@ -179,43 +177,42 @@ public class IfElseStatementTheme {
         System.out.println(" руб.");
         System.out.println("");
 
-        //======== 09
         System.out.println("09. Подсчет количества банкнот");
-        int needSum =  567;
-        int ostBanknote100 = 10;
-        int cntBanknote100 = 0;
-        int ostBanknote10 = 5;
-        int cntBanknote10 = 0;
-        int ostBanknote1 = 50;
-        int cntBanknote1 = 50;
-
-        cntBanknote100 = needSum / 100;
-        if(cntBanknote100 > ostBanknote100) {
-            cntBanknote100 = ostBanknote100;
+        int issuedSum =  567;
+        int checkSum = issuedSum;
+        int amountBanknote100 = 10;
+        int amountBanknote10 = 5;
+        int amountBanknote1 = 50;
+        int numBanknoteIssued100 = 0;
+        int numBanknoteIssued10 = 0;
+        int numBanknoteIssued1 = 50;
+        numBanknoteIssued100 = checkSum / 100;
+        if(numBanknoteIssued100 > amountBanknote100) {
+            numBanknoteIssued100 = amountBanknote100;
         }
-        needSum = needSum - cntBanknote100 * 100;
+        checkSum -= numBanknoteIssued100 * 100;
 
-        cntBanknote10 = needSum / 10;
-        if(cntBanknote10 > ostBanknote10) {
-            cntBanknote10 = ostBanknote10;
+        numBanknoteIssued10 = checkSum / 10;
+        if(numBanknoteIssued10 > amountBanknote10) {
+            numBanknoteIssued10 = amountBanknote10;
         }
-        needSum = needSum - cntBanknote10 * 10;
+        checkSum -= numBanknoteIssued10 * 10;
 
-        cntBanknote1 = needSum;
-        if(cntBanknote1 > ostBanknote1) {
-            cntBanknote1 = ostBanknote1;
+        numBanknoteIssued1 = checkSum;
+        if(numBanknoteIssued1 > amountBanknote1) {
+            numBanknoteIssued1 = amountBanknote1;
         }
-        needSum = needSum - cntBanknote1;
+        checkSum -= numBanknoteIssued1;
 
-        if(needSum!=0){
+        if(checkSum!=0){
             System.out.println("Недостаточно банкнот для выдачи.");
         } else {
             System.out.println("К выдаче:");
-            System.out.println("Банкнот номиналом 100 USD: " + cntBanknote100 + " шт.");
-            System.out.println("Банкнот номиналом 10 USD: " + cntBanknote10 + " шт.");
-            System.out.println("Банкнот номиналом 1 USD: " + cntBanknote1 + " шт.");
-            needSum = cntBanknote100 * 100 + cntBanknote10 * 10 + cntBanknote1;
-            System.out.println("посчитанная исходная сумма: " + needSum);
+            System.out.println("Банкнот номиналом 100 USD: " + numBanknoteIssued100 + " шт.");
+            System.out.println("Банкнот номиналом 10 USD: " + numBanknoteIssued10 + " шт.");
+            System.out.println("Банкнот номиналом 1 USD: " + numBanknoteIssued1 + " шт.");
+            checkSum = numBanknoteIssued100 * 100 + numBanknoteIssued10 * 10 + numBanknoteIssued1;
+            System.out.println("посчитанная исходная сумма: " + checkSum);
         }
 
         System.out.println("");
