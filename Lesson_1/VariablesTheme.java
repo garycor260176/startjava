@@ -45,18 +45,15 @@ public class VariablesTheme {
         short maxShort = Short.MAX_VALUE;
         int maxInt = Integer.MAX_VALUE;
         long maxLong = Long.MAX_VALUE;
-        System.out.print("byte: src = " + maxByte);
-        System.out.print(", inc = " + ++maxByte);
-        System.out.println(", dec = " + --maxByte);
-        System.out.print("short: src = " + maxShort);
-        System.out.print(", inc = " + ++maxShort);
-        System.out.println(", dec = " + --maxShort);
-        System.out.print("int: src = " + maxInt);
-        System.out.print(", inc = " + ++maxInt);
-        System.out.println(", dec = " + --maxInt);
-        System.out.print("long: src = " + maxLong);
-        System.out.print(", inc = " + ++maxLong);
-        System.out.println(", dec = " + --maxLong);
+        System.out.println("byte: src = " + maxByte + ", inc = " + ++maxByte + 
+                           ", dec = " + --maxByte);
+        System.out.println("short: src = " + maxShort + ", inc = " + ++maxShort + 
+                           ", dec = " + --maxShort);
+        System.out.print("int: src = " + maxInt + ", inc = " + ++maxInt + 
+                         ", dec = " + --maxInt);
+        System.out.print("long: src = " + maxLong + 
+                         ", inc = " + ++maxLong + 
+                         ", dec = " + --maxLong);
         System.out.println("");
 
         System.out.println("05. Перестановка значений переменных");
