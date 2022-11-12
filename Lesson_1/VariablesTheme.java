@@ -49,9 +49,9 @@ public class VariablesTheme {
                            ", dec = " + --maxByte);
         System.out.println("short: src = " + maxShort + ", inc = " + ++maxShort + 
                            ", dec = " + --maxShort);
-        System.out.print("int: src = " + maxInt + ", inc = " + ++maxInt + 
+        System.out.println("int: src = " + maxInt + ", inc = " + ++maxInt + 
                          ", dec = " + --maxInt);
-        System.out.print("long: src = " + maxLong + 
+        System.out.println("long: src = " + maxLong + 
                          ", inc = " + ++maxLong + 
                          ", dec = " + --maxLong);
         System.out.println("");
