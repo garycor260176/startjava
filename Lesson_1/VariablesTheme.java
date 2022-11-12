@@ -20,7 +20,7 @@ public class VariablesTheme {
         System.out.println("первый символ архитектуры: '" + firstSymOfArchName + "'");
         System.out.println("частота процессора: " + cpuFreq + " ГГц");
         System.out.println("частота видепамяти: " + videoMemFreq);
-        System.out.println("видеокарта дискретная " + discreteVideoCard);
+        System.out.println("видеокарта дискретная? " + discreteVideoCard);
         System.out.println("");
 
         System.out.println("02. Расчет стоимости товара со скидкой");
