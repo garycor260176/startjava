@@ -11,22 +11,18 @@ public class MyFirstGame {
         int userNum = 99; //значение пользователя
 
         int i = 1; //счетчик итераций
-        while(true){
+        while(true) {
             if(userNum > hiddenNum) {
                 System.out.println(i + ") Число " + userNum + " больше того, что загадал компьютер");
-
                 maxValue = userNum - 1; //сужаем диапазон справа
-            } else if(userNum < hiddenNum){
+            } else if(userNum < hiddenNum) {
                 System.out.println(i + ") " + userNum + " меньше того, что загадал компьютер");
-
                 minValue = userNum + 1; //сужаем диапазон слева
             } else {
                 System.out.println(i + ") Вы победили!");
                 break;
             }
-
             userNum = minValue + ( maxValue - minValue ) / 2; //середина нового диапазона
-
             i++;
         }
 

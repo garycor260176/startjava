@@ -9,22 +9,14 @@ public class Calculator {
         int num2 = 12;
         double result = 0.0d;
 
-        if(sign == '+'){
-            result = num1 + num2;
-        } else if(sign == '-'){
-            result = num1 - num2;
-        } else if(sign == '*'){
-            result = num1 * num2;
-        } else if(sign == '/'){
-            result = (double) num1 / (double) num2;
-        } else if(sign == '^'){
+        if(sign == '+')  result = num1 + num2;
+        else if(sign == '-') result = num1 - num2;
+        else if(sign == '*') result = num1 * num2;
+        else if(sign == '/') result = (double) num1 / (double) num2;
+        else if(sign == '^') {
             result = 1.0f;
-            for(int i=1; i<=num2; i++){
-                result *= (double) num1;
-            }
-        } else if(sign == '%'){
-            result = num1 % num2;
-        }
+            for(int i=1; i<=num2; i++) result *= (double) num1;
+        } else if(sign == '%') result = num1 % num2;
 
         System.out.printf("%d %c %d = %f%n", num1, sign, num2, result);
     }   
