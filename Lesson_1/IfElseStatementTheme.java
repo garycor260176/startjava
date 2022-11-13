@@ -4,15 +4,15 @@ public class IfElseStatementTheme {
     public static void main(String[] args) {
         System.out.println("01. Перевод псевдокода на язык Java");
         int age = 100;
-        boolean sex = true;
+        boolean maleGender = true;
         float height = 1.90f;
         String name = "Вася";
         if(age > 20) {
-            System.out.println("Возвраст: старше 20 лет");
+            System.out.println("Возраст: старше 20 лет");
         } else {
             System.out.println("Возвраст: меньше или равен 20 годам");
         }
-        if(!sex) {
+        if(!maleGender) {
             System.out.println("пол: женский");
         } else {
             System.out.println("пол: мужской");
@@ -50,7 +50,7 @@ public class IfElseStatementTheme {
         System.out.println("\n03. Работа с числом");
         int num = 300;
         System.out.print("Заданное число " + num + " ");
-        if(num == 0){
+        if(num == 0) {
             System.out.println("является нулем.");
         } else {
             if(num % 2 == 0) {
@@ -77,20 +77,20 @@ public class IfElseStatementTheme {
         int tensOfnum2 = num2 / 10 % 10;
         int onesOfnum2 = num2 % 10;
 
-        boolean flagEQ = false;
+        boolean EQ = false;
         if(onesOfnum1 == onesOfnum2) {
-            flagEQ = true;
+            EQ = true;
             System.out.println("совпадает цифра в первом разряде: " + onesOfnum1);
         }
         if(tensOfnum1 == tensOfnum2) {
-            flagEQ = true;
+            EQ = true;
             System.out.println("совпадает цифра во втором разряде: " + tensOfnum1);
         }
         if(hundredsOfnum1 == hundredsOfnum2) {
-            flagEQ = true;
+            EQ = true;
             System.out.println("совпадает цифра в третьем разряде: " + hundredsOfnum1);
         }
-        if(!flagEQ){
+        if(!EQ) {
             System.out.println("Нет одинаковых цифр в соответствующих разрядах");
         }
 
@@ -112,39 +112,35 @@ public class IfElseStatementTheme {
         float sum = 300000.0f;
         System.out.println("сумма вклада: " + sum);
         float interestAmount;
+        float percent = 0.1f;
         if(sum < 100000.0f) {
-            interestAmount = sum * 0.05f;
+            percent = 0.05f;
         } else if(sum >= 100000.0f && sum <= 300000.0f) {
-            interestAmount = sum * 0.07f;
-        } else {
-            interestAmount = sum * 0.1f;
+            percent = 0.07f;
         }
+        interestAmount = sum * percent;
         System.out.println("начисленный %: "+ interestAmount);
         System.out.println("итоговая сумму с %: " + (sum + interestAmount));
 
         System.out.println("\n07. Определение оценки по предметам");
         int history = 59;
         int programming = 91;
-        int historyScore;
+        int historyScore = 5;
         if(history<=60) {
             historyScore = 2;
         } else if(history>60 && history<=73) {
             historyScore = 3;
-        } else if(history>73 && history<=91){
+        } else if(history>73 && history<=91) {
             historyScore = 4;
-        } else {
-            historyScore = 5;
         }
         System.out.println("История: оценка - " + historyScore);
-        int programmingScore;
+        int programmingScore = 5;
         if(programming<=60) {
             programmingScore = 2;
         } else if(programming>60 && programming<=73) {
             programmingScore = 3;
-        } else if(programming>73 && programming<=91){
+        } else if(programming>73 && programming<=91) {
             programmingScore = 4;
-        } else {
-            programmingScore = 5;
         }
         System.out.println("Программирование: оценка - " + programmingScore);
         System.out.println("средний балл оценок по предметам: " + 
@@ -183,7 +179,7 @@ public class IfElseStatementTheme {
         if(amountBanknoteIssued1 > amountBanknote1) amountBanknoteIssued1 = amountBanknote1;
         checkSum -= amountBanknoteIssued1;
 
-        if(checkSum!=0){
+        if(checkSum!=0) {
             System.out.println("Недостаточно банкнот для выдачи.");
         } else {
             System.out.println("К выдаче:");

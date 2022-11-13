@@ -48,8 +48,7 @@ public class VariablesTheme {
                 ", dec = " + --maxShort);
         System.out.println("int: src = " + maxInt + ", inc = " + ++maxInt + 
                 ", dec = " + --maxInt);
-        System.out.println("long: src = " + maxLong + 
-                ", inc = " + ++maxLong + 
+        System.out.println("long: src = " + maxLong + ", inc = " + ++maxLong + 
                 ", dec = " + --maxLong);
 
         System.out.println("\n05. Перестановка значений переменных");
@@ -121,11 +120,9 @@ public class VariablesTheme {
 
         System.out.println("\n10. Вывод времени");
         int srcSeconds = 86399;
-        int seconds = srcSeconds;
-        int hours = seconds / 3600;
-        seconds = seconds % 3600; 
-        int minute = seconds / 60; 
-        seconds = seconds % 60; 
+        int hours =  srcSeconds / 3600;
+        int minute = srcSeconds / 3600 % 60; 
+        int seconds = srcSeconds % 60; 
         System.out.println(hours + ":" + minute + ":" + seconds);        
     }   
 }
