@@ -25,7 +25,5 @@ public class MyFirstGame {
             userNum = minValue + ( maxValue - minValue ) / 2; //середина нового диапазона
             i++;
         }
-
     }   
-
 }

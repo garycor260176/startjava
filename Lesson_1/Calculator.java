@@ -19,6 +19,5 @@ public class Calculator {
         } else if(sign == '%') result = num1 % num2;
 
         System.out.printf("%d %c %d = %f%n", num1, sign, num2, result);
-    }   
-
+    }
 }
