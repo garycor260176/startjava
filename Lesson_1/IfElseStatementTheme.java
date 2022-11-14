@@ -123,26 +123,26 @@ public class IfElseStatementTheme {
         int history = 59;
         int programming = 91;
         int historyScore = 5;
-        if(history<=60) {
+        if(history <= 60) {
             historyScore = 2;
-        } else if(history>60 && history<=73) {
+        } else if(history > 60 && history <= 73) {
             historyScore = 3;
-        } else if(history>73 && history<=91) {
+        } else if(history > 73 && history <= 91) {
             historyScore = 4;
         }
         System.out.println("История: оценка - " + historyScore);
         int programmingScore = 5;
-        if(programming<=60) {
+        if(programming <= 60) {
             programmingScore = 2;
-        } else if(programming>60 && programming<=73) {
+        } else if(programming > 60 && programming <= 73) {
             programmingScore = 3;
-        } else if(programming>73 && programming<=91) {
+        } else if(programming > 73 && programming <= 91) {
             programmingScore = 4;
         }
         System.out.println("Программирование: оценка - " + programmingScore);
         System.out.println("средний балл оценок по предметам: " + 
-                (historyScore + programmingScore)/2);
-        System.out.println("средний % по предметам: " + (history + programming)/2);
+                (historyScore + programmingScore) / 2);
+        System.out.println("средний % по предметам: " + (history + programming / 2);
 
         System.out.println("\n08. Расчет прибыли");
         float rent = 5000.0f;

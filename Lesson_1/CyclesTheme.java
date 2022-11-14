@@ -3,20 +3,18 @@ public class CyclesTheme {
 
     public static void main(String[] args) {
         System.out.println("01. Подсчет суммы четных и нечетных чисел");
-        int startNum = -10;
-        int endNum = 21;
+        int startRange = -10;
+        int endRange = 21;
         int sumOdd = 0;
         int sumEven = 0;
         do {
-            if(startNum > endNum) break;
-            if(startNum % 2 == 0) {
-                sumOdd += startNum;
+            if(startRange % 2 == 0) {
+                sumOdd += startRange;
             } else {
-                sumEven += startNum;
+                sumEven += startRange;
             }
-            startNum++;
-        }
-        while(startNum <= endNum);
+            startRange++;
+        } while (startRange <= endRange);
         System.out.println("в промежутке [-10, 21] сумма четных чисел = " + sumOdd + 
                 ", а нечетных = " + sumEven);    
 
@@ -39,17 +37,15 @@ public class CyclesTheme {
 
         System.out.println("\n\n03. Вывод реверсивного числа и суммы его цифр");
         int num = 1234;
-        int numReverse = num;
         int sum = 0;
         System.out.print("исходное число в обратном порядке: ");
-        while(numReverse > 0) {
-            int lastNum = numReverse % 10;
-            System.out.print(lastNum);
-            sum += lastNum;
-            numReverse /= 10;
+        while(num > 0) {
+            int digit = num % 10;
+            System.out.print(digit);
+            sum += digit;
+            num /= 10;
         }
-        System.out.println();
-        System.out.println("сумма его цифр: " + sum);
+        System.out.println("\nсумма его цифр: " + sum);
 
         System.out.println("\n04. Вывод чисел на консоль в несколько строк");
         int column = 0;
@@ -66,14 +62,14 @@ public class CyclesTheme {
             column--;
         }
 
-        System.out.println("\n05. Проверка количества единиц на четность");
+        System.out.println("\n05. Проверка количества двоек на четность");
         num = 3242592;
         int count = 0;
-        int tmp = num;
-        while(tmp > 0) {
-            int lastNum = tmp % 10;
-            if(lastNum == 2) count++;
-            tmp /= 10;
+        int copyNum = num;
+        while(copyNum > 0) {
+            int digit = copyNum % 10;
+            if(digit == 2) count++;
+            copyNum /= 10;
         }
         System.out.print("число " + num + " содержит " + count);
         if(count % 2 == 0) {
