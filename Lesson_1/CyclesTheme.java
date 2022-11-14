@@ -29,8 +29,7 @@ public class CyclesTheme {
         if(maxNum < num2) maxNum = num2;
         if(maxNum < num3) maxNum = num3;
         maxNum--;
-        minNum++;
-        for(int i = maxNum; i >= minNum; i--) {
+        for(int i = maxNum; i > minNum; i--) {
             if(i < maxNum) System.out.print(", ");
             System.out.print(i);
         }
