@@ -57,7 +57,7 @@ public class CyclesTheme {
             column++;
             System.out.printf("%5s", i);
             if(column == 5) {
-                System.out.println("");
+                System.out.println();
                 column = 0;
             }
         }
@@ -137,19 +137,18 @@ public class CyclesTheme {
         System.out.println("Сумма цифр " + rightPart + " = " + rightPartSum);
         if(rightPartSum == leftPartSum) System.out.println("Число "+ srcNum + " счастливое");
         else System.out.println("Число "+ srcNum + " несчастливое");
-        System.out.println("");
 
-        System.out.println("10. Вывод таблицы умножения Пифагора");
+        System.out.println("\n10. Вывод таблицы умножения Пифагора");
         System.out.println("        ТАБЛИЦА ПИФАГОРА");
         System.out.printf("%3s |", "");
         for(i=2; i<10; i++) System.out.printf("%3s", i);
-        System.out.println("");
+        System.out.println();
         for(i=1; i<11; i++) System.out.printf("%3s", "___");
-        System.out.println("");
+        System.out.println();
         for(i=2; i<10; i++) {
             System.out.printf("%3s |", i);
             for(j=2; j<10; j++) System.out.printf("%3s", i * j);
-            System.out.println("");
+            System.out.println();
         }
     }   
 }

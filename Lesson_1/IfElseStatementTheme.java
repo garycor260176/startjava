@@ -10,7 +10,7 @@ public class IfElseStatementTheme {
         if(age > 20) {
             System.out.println("Возраст: старше 20 лет");
         } else {
-            System.out.println("Возвраст: меньше или равен 20 годам");
+            System.out.println("Возраст: меньше или равен 20 годам");
         }
         if(!maleGender) {
             System.out.println("пол: женский");
@@ -22,10 +22,10 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("рост: выше или равен 1.90");
         }
-        char firstSymName = name.charAt(0);
-        if(firstSymName == 'M') {
+        char capitalLetter = name.charAt(0);
+        if(capitalLetter == 'M') {
             System.out.println("Первая буква в имени 'M'");
-        } else if (firstSymName == 'I') {
+        } else if (capitalLetter == 'I') {
             System.out.println("Первая буква в имени 'I'");
         } else {
             System.out.println("Первая буква в имени не 'M' и не 'I'");
@@ -42,9 +42,6 @@ public class IfElseStatementTheme {
                     "(максимальное)");
         } else {
             System.out.println("num1 = " + num1 + ", num2 = " + num2 + ". Числа равны.");
-        }
-        if(num1 == num2) {
-            System.out.println(num1 + " = " + num2);
         }
 
         System.out.println("\n03. Работа с числом");
@@ -77,20 +74,20 @@ public class IfElseStatementTheme {
         int tensOfnum2 = num2 / 10 % 10;
         int onesOfnum2 = num2 % 10;
 
-        boolean EQ = false;
+        boolean equals = false;
         if(onesOfnum1 == onesOfnum2) {
-            EQ = true;
+            equals = true;
             System.out.println("совпадает цифра в первом разряде: " + onesOfnum1);
         }
         if(tensOfnum1 == tensOfnum2) {
-            EQ = true;
+            equals = true;
             System.out.println("совпадает цифра во втором разряде: " + tensOfnum1);
         }
         if(hundredsOfnum1 == hundredsOfnum2) {
-            EQ = true;
+            equals = true;
             System.out.println("совпадает цифра в третьем разряде: " + hundredsOfnum1);
         }
-        if(!EQ) {
+        if(!equals) {
             System.out.println("Нет одинаковых цифр в соответствующих разрядах");
         }
 
@@ -151,7 +148,7 @@ public class IfElseStatementTheme {
         float rent = 5000.0f;
         float sale = 13000.0f;
         float costPrice = 9000.0f;
-        float profit = (sale - costPrice - rent)*12;
+        float profit = (sale - costPrice - rent) * 12;
         System.out.print("прибыль за год: ");
         if(profit < 0) {
             System.out.print(profit);
@@ -166,20 +163,17 @@ public class IfElseStatementTheme {
         int amountBanknote100 = 10;
         int amountBanknote10 = 5;
         int amountBanknote1 = 50;
-        int amountBanknoteIssued100 = 0;
-        int amountBanknoteIssued10 = 0;
-        int amountBanknoteIssued1 = 50;
-        amountBanknoteIssued100 = checkSum / 100;
+        int amountBanknoteIssued100 = checkSum / 100;
         if(amountBanknoteIssued100 > amountBanknote100) amountBanknoteIssued100 = amountBanknote100;
         checkSum -= amountBanknoteIssued100 * 100;
-        amountBanknoteIssued10 = checkSum / 10;
+        int amountBanknoteIssued10 = checkSum / 10;
         if(amountBanknoteIssued10 > amountBanknote10) amountBanknoteIssued10 = amountBanknote10;
         checkSum -= amountBanknoteIssued10 * 10;
-        amountBanknoteIssued1 = checkSum;
+        int amountBanknoteIssued1 = checkSum;
         if(amountBanknoteIssued1 > amountBanknote1) amountBanknoteIssued1 = amountBanknote1;
         checkSum -= amountBanknoteIssued1;
 
-        if(checkSum!=0) {
+        if(checkSum != 0) {
             System.out.println("Недостаточно банкнот для выдачи.");
         } else {
             System.out.println("К выдаче:");
@@ -190,9 +184,5 @@ public class IfElseStatementTheme {
                     amountBanknoteIssued1;
             System.out.println("посчитанная исходная сумма: " + checkSum);
         }
-
-        System.out.println("");
-       
    }
-
 }
