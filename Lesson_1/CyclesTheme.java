@@ -53,7 +53,7 @@ public class CyclesTheme {
 
         System.out.println("\n04. Вывод чисел на консоль в несколько строк");
         int column = 0;
-        for(int i = 1; i < 24; i+=2) {
+        for(int i = 1; i < 24; i += 2) {
             column++;
             System.out.printf("%5s", i);
             if(column == 5) {
@@ -129,8 +129,8 @@ public class CyclesTheme {
         while(num > 0) {
             int figure = num % 10;
             num /= 10;
-            if(count < 3) leftPartSum+=figure;
-            else rightPartSum+=figure;
+            if(count < 3) leftPartSum += figure;
+            else rightPartSum += figure;
             count++;
         }
         System.out.println("Сумма цифр " + leftPart + " = " + leftPartSum);
