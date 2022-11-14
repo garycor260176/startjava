@@ -62,7 +62,7 @@ public class CyclesTheme {
             column--;
         }
 
-        System.out.println("\n05. Проверка количества двоек на четность");
+        System.out.println("\n\n05. Проверка количества двоек на четность");
         num = 3242592;
         int count = 0;
         int copyNum = num;
