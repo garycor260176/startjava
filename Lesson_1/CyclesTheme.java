@@ -24,12 +24,11 @@ public class CyclesTheme {
         int num3 = -1;
         int minNum = num1;
         int maxNum = num1;
-        if(minNum > num2) minNum = num2;
-        if(minNum > num3) minNum = num3;
-        if(maxNum < num2) maxNum = num2;
-        if(maxNum < num3) maxNum = num3;
-        maxNum--;
-        for(int i = maxNum; i > minNum; i--) {
+        if(num2 < minNum) minNum = num2;
+        if(num3 < minNum) minNum = num3;
+        if(num2 > maxNum) maxNum = num2;
+        if(num3 > maxNum) maxNum = num3;
+        for(int i = maxNum; i >= minNum; i--) {
             if(i < maxNum) System.out.print(", ");
             System.out.print(i);
         }
