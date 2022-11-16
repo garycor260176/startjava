@@ -78,70 +78,71 @@ public class CyclesTheme {
         System.out.println("количество двоек");
 
         System.out.println("\n06. Отображение фигур в консоли");
-        for(int i = 0; i < 5; i++) System.out.println("**********");
-        int i = 5;
-        while(i > 0) {
-            System.out.printf("%1." + i + "s%n", "#####");
-            i--;
+        for(int cntLine = 0; cntLine < 5; cntLine++) System.out.println("**********");
+        
+        int cntLine = 5;
+        while(cntLine > 0) {
+            System.out.printf("%1." + cntLine + "s%n", "#####");
+            cntLine--;
         }
-        i = 0;
-        int j = 0;
+
+        cntLine = 0;
+        int cntChar = 0;
         do {
-            if(i < 3) j++;
-            else j--;
-            System.out.printf("%1." + j + "s%n", "$$$");
-            i++;
-        } while(i < 5);
+            if(cntLine < 3) cntChar++;
+            else cntChar--;
+            System.out.printf("%1." + cntChar + "s%n", "$$$");
+            cntLine++;
+        } while(cntLine < 5);
 
         System.out.println("\n07. Отображение ASCII-символов");
         System.out.printf("%5s | %5s%n", "Dec", "Char");
-        for(i = 0; i <= 47; i++) {
-            if(i % 2 != 0) System.out.printf("%5s | %5c%n", i, (char) i);
+        for(int i = 0; i <= 47; i++) {
+            if(i % 2 != 0) System.out.printf("%5d | %5c%n", i, i);
         }
-        for(i = 97; i <= 122; i++) {
-            if(i % 2 == 0) System.out.printf("%5s | %5c%n", i, (char) i);
+        for(int i = 97; i <= 122; i++) {
+            if(i % 2 == 0) System.out.printf("%5d | %5c%n", i, i);
         }
 
         System.out.println("\n08. Проверка, является ли число палиндромом");
         int srcNum = 1234321;
         int revNum = 0;
-        num = srcNum;
-        while (num > 0) {
-          int dig = num % 10;
-          revNum = revNum * 10 + dig;
-          num /= 10;
+        int copySrcNum= srcNum;
+        while (copySrcNum > 0) {
+          revNum = revNum * 10 + copySrcNum % 10;
+          copySrcNum /= 10;
         }        
         if(revNum == srcNum) System.out.println("число " + srcNum + " является палиндромом");
 
         System.out.println("\n09. Определение, является ли число счастливым");
-        num = srcNum = 152332;
-        int leftPart = num / 1000;
-        int rightPart = num % 1000;
-        int leftPartSum = 0;
-        int rightPartSum = 0;
+        copySrcNum = srcNum = 152332;
+        int topHalf = copySrcNum / 1000;
+        int bottomHalf = copySrcNum % 1000;
+        int topHalfSum = 0;
+        int bottomHalfSum = 0;
         count = 0;
-        while(num > 0) {
-            int figure = num % 10;
-            num /= 10;
-            if(count < 3) leftPartSum += figure;
-            else rightPartSum += figure;
+        while(copySrcNum > 0) {
+            int dig = copySrcNum % 10;
+            copySrcNum /= 10;
+            if(count < 3) topHalfSum += dig;
+            else bottomHalfSum += dig;
             count++;
         }
-        System.out.println("Сумма цифр " + leftPart + " = " + leftPartSum);
-        System.out.println("Сумма цифр " + rightPart + " = " + rightPartSum);
-        if(rightPartSum == leftPartSum) System.out.println("Число "+ srcNum + " счастливое");
+        System.out.println("Сумма цифр " + topHalf + " = " + topHalfSum);
+        System.out.println("Сумма цифр " + bottomHalf + " = " + bottomHalfSum);
+        if(bottomHalfSum == topHalfSum) System.out.println("Число "+ srcNum + " счастливое");
         else System.out.println("Число "+ srcNum + " несчастливое");
 
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         System.out.println("        ТАБЛИЦА ПИФАГОРА");
         System.out.printf("%3s |", "");
-        for(i = 2; i < 10; i++) System.out.printf("%3s", i);
+        for(int i = 2; i < 10; i++) System.out.printf("%3s", i);
         System.out.println();
-        for(i = 1; i < 11; i++) System.out.printf("%3s", "___");
+        for(int i = 1; i < 11; i++) System.out.printf("%3s", "___");
         System.out.println();
-        for(i = 2; i < 10; i++) {
+        for(int i = 2; i < 10; i++) {
             System.out.printf("%3s |", i);
-            for(j = 2; j < 10; j++) System.out.printf("%3s", i * j);
+            for(int j = 2; j < 10; j++) System.out.printf("%3s", i * j);
             System.out.println();
         }
     }   
