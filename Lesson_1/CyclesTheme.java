@@ -78,7 +78,8 @@ public class CyclesTheme {
         System.out.println("количество двоек");
 
         System.out.println("\n06. Отображение фигур в консоли");
-        for(int cntLine = 0; cntLine < 5; cntLine++) System.out.println("**********");
+        for(int cntLine = 0; cntLine < 5; cntLine++) 
+            System.out.println("**********");
         
         int cntLine = 5;
         while(cntLine > 0) {
@@ -107,12 +108,13 @@ public class CyclesTheme {
         System.out.println("\n08. Проверка, является ли число палиндромом");
         int srcNum = 1234321;
         int revNum = 0;
-        int copySrcNum= srcNum;
+        int copySrcNum = srcNum;
         while (copySrcNum > 0) {
-          revNum = revNum * 10 + copySrcNum % 10;
-          copySrcNum /= 10;
+            revNum = revNum * 10 + copySrcNum % 10;
+            copySrcNum /= 10;
         }        
-        if(revNum == srcNum) System.out.println("число " + srcNum + " является палиндромом");
+        if(revNum == srcNum) 
+            System.out.println("число " + srcNum + " является палиндромом");
 
         System.out.println("\n09. Определение, является ли число счастливым");
         copySrcNum = srcNum = 152332;
@@ -122,16 +124,18 @@ public class CyclesTheme {
         int bottomHalfSum = 0;
         count = 0;
         while(copySrcNum > 0) {
-            int dig = copySrcNum % 10;
+            int digit = copySrcNum % 10;
             copySrcNum /= 10;
-            if(count < 3) topHalfSum += dig;
-            else bottomHalfSum += dig;
+            if(count < 3) topHalfSum += digit;
+            else bottomHalfSum += digit;
             count++;
         }
         System.out.println("Сумма цифр " + topHalf + " = " + topHalfSum);
         System.out.println("Сумма цифр " + bottomHalf + " = " + bottomHalfSum);
-        if(bottomHalfSum == topHalfSum) System.out.println("Число "+ srcNum + " счастливое");
-        else System.out.println("Число "+ srcNum + " несчастливое");
+        if(bottomHalfSum == topHalfSum) 
+            System.out.println("Число "+ srcNum + " счастливое");
+        else 
+            System.out.println("Число "+ srcNum + " несчастливое");
 
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         System.out.println("        ТАБЛИЦА ПИФАГОРА");
