@@ -1,5 +1,5 @@
 public class Person {
-    boolean maleGender = false;
+    boolean maleGender;
     String name = "Вася";
     float height = 1.9f;
     int age = 40;
