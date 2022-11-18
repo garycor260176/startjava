@@ -1,9 +1,48 @@
 public class Wolf {
-    public boolean maleGender;
-    public String name;
-    public float weight;
-    public int age;
-    public String color;
+    private boolean maleGender;
+    private String name;
+    private float weight;
+    private int age;
+    private String color;
+
+    public void setGender(boolean value){
+        maleGender = value;
+    }
+    public boolean getGender(){
+        return maleGender;
+    }
+
+    public void setName(String value){
+        name = value;
+    }
+    public String getName(){
+        return name;
+    }
+
+    public void setWeight(float value){
+        weight = value;
+    }
+    public float getWeight(){
+        return weight;
+    }
+
+    public void setAge(int value){
+        if(value > 8) {
+            System.out.println("Некорректный возраст");
+            return;
+        }
+        age = value;
+    }
+    public int getAge(){
+        return age;
+    }
+
+    public void setColor(String value){
+        color = value;
+    }
+    public String getColor(){
+        return color;
+    }
 
 
     public void go() {
