@@ -25,7 +25,3 @@ public class Person {
 
     }
 }
-
-public class Wolf {
-    
-}
