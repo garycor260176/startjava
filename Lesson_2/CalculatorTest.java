@@ -55,7 +55,7 @@ public class CalculatorTest {
         return sign;
    }
 
-    public static boolean enabledSign(char sign) {
+    private static boolean enabledSign(char sign) {
         switch(sign) {
             case '+': 
             case '-': 
