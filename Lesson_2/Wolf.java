@@ -5,11 +5,11 @@ public class Wolf {
     private int age;
     private String color;
 
-    public void setGender(boolean gender) {
-        this.maleGender = gender;
+    public void setMaleGender(boolean maleGender) {
+        this.maleGender = maleGender;
     }
 
-    public boolean getGender() {
+    public boolean getMaleGender() {
         return maleGender;
     }
 
