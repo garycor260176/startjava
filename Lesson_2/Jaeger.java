@@ -91,5 +91,4 @@ public class Jaeger {
     public void useVortexCannon() {
         System.out.println("activated");
     }
-
 }

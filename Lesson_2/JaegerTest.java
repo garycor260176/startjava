@@ -42,5 +42,4 @@ public class JaegerTest {
         System.out.println("Strength: " + jaeger.getStrength());
         System.out.println("Armor: " + jaeger.getArmor());
     }
-
 }
