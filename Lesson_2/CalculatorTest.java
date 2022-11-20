@@ -19,9 +19,7 @@ public class CalculatorTest {
             double result = calculator.calc(num1, num2, sign);
             System.out.println("Результат: " + result);
 
-            String answer = inputYesNo(scanner);
-            if(answer.equals("no"))
-                break;
+            if("no".equals(inputYesNo(scanner))) break;
         }
 
         scanner.close();
