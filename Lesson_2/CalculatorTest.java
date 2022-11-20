@@ -30,7 +30,7 @@ public class CalculatorTest {
         do {
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             answer = scanner.next();
-        } while (!answer.equals("yes") && !answer.equals("no"));
+        } while (!"yes".equals(answer) && !"no".equals(answer));
         return answer;
     }
 
