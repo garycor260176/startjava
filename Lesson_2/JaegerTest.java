@@ -11,29 +11,29 @@ public class JaegerTest {
         jaeger1.setArmor(9);
         
         Jaeger jaeger2 = new Jaeger("Gipsy Danger", "Mark-3", "United States of America", 79.25f, 
-            1.980f, 8, 6);
+                1.980f, 8, 6);
 
-        System.out.println("\n********* Base parameters **********************");
-        outputJaggerFields(jaeger1);
+        System.out.println("\n********* Base Features **********************");
+        outputJaggerFeatures(jaeger1);
         jaeger1.useVortexCannon();
 
         System.out.println();
         
-        outputJaggerFields(jaeger2);
+        outputJaggerFeatures(jaeger2);
         jaeger2.move();
 
-        System.out.println("\n********* Parameters after upgrade *************");
+        System.out.println("\n********* Features after upgrade *************");
         jaeger1.setArmor(10);
         jaeger2.setHeight(74.4f);
 
-        outputJaggerFields(jaeger1);
+        outputJaggerFeatures(jaeger1);
         System.out.println();
     
-        outputJaggerFields(jaeger2);
+        outputJaggerFeatures(jaeger2);
 
     }
 
-    public static void outputJaggerFields(Jaeger jaeger) {
+    public static void outputJaggerFeatures(Jaeger jaeger) {
         System.out.println("====== Jaeger '" + jaeger.getModelName() + "'");
         System.out.println("Mark: " + jaeger.getMark());
         System.out.println("Origin: " + jaeger.getOrigin());
