@@ -21,15 +21,13 @@ public class GuessNumberTest {
         while(true) {
             guessNumber.startGame( );
 
-            String answer;
             while(true) {
                 System.out.print("Хотите продолжить игру? [yes/no]: ");
-                answer = scanner.next();
-                if("yes".equals(answer) || "no".equals(answer)) 
+                if("yes".equals(answer)) {
                     break;
+                } else if("no".equals(answer)) 
+                    return;
             }
-            if("no".equals(answer)) break;
         }
     }    
-
 }

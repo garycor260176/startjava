@@ -23,17 +23,15 @@ public class CalculatorTest {
             double result = calculator.calc();
             System.out.println("Результат: " + result);
 
-            String answer;
             while(true) {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-                answer = scanner.next();
-                if("yes".equals(answer) || "no".equals(answer)) 
+                String answer = scanner.next();
+                if("yes".equals(answer)) {
                     break;
+                } else if("no".equals(answer)) 
+                    return;
             }
-            if("no".equals(answer)) break;
         }
-
-        scanner.close();
     }
 
     private static int inputNum(Scanner scanner) {
