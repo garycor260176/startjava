@@ -22,11 +22,10 @@ public class GuessNumberTest {
         while(!"no".equals(answer)) {
             guessNumber.startGame( );
 
-            answer = "";
-            while(!"yes".equals(answer) && !"no".equals(answer)) {
+            do {
                 System.out.print("Хотите продолжить игру? [yes/no]: ");
                 answer = scanner.next();
-            }
+            } while(!"yes".equals(answer) && !"no".equals(answer));                
         }
     }    
 }

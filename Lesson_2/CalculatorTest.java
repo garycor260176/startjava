@@ -14,22 +14,18 @@ public class CalculatorTest {
             System.out.print("Введите знак математической операции: ");
             while(true) {
                 char sign = scanner.next().charAt(0);
-                if(calculator.setSign(sign))
-                    break;
+                if(calculator.setSign(sign)) break;
                 System.out.print("Операция '" + sign +  "' недоступна. Попробуйте снова: ");
             }
 
             System.out.print("Введите второе число: ");
             calculator.setNum2(inputNum(scanner));
 
-            double result = calculator.calc();
-            System.out.println("Результат: " + result);
-
-            answer = "";
-            while(!"yes".equals(answer) && !"no".equals(answer)) {
+            System.out.println("Результат: " + calculator.calc());
+            do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
                 answer = scanner.next();
-            }
+            } while(!"yes".equals(answer) && !"no".equals(answer));
         }
     }
 
