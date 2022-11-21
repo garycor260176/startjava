@@ -4,8 +4,6 @@ public class GuessNumber {
     private Player player1;
     private Player player2;
     private int hiddenNum;
-    private int minRange = 1;
-    private int maxRange = 100;
     private Scanner scanner;
 
     public GuessNumber(Player player1, Player player2, Scanner scanner) {
@@ -24,7 +22,7 @@ public class GuessNumber {
     }
 
     private void generateNumber() {
-        hiddenNum = minRange + (int) (Math.random() * 100);
+        hiddenNum = 1 + (int) (Math.random() * 100);
     }
 
     private boolean playerNextNum(Player player){
