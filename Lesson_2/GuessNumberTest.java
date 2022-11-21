@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class GuessNumberTest {
-    static Scanner scanner;
-    static GuessNumber guessNumber;
-    static Player player1;
-    static Player player2;
-
     public static void main(String[] args) {
+        Scanner scanner;
+        GuessNumber guessNumber;
+        Player player1;
+        Player player2;
+
         System.out.println("********* Игра 'Угадай число' ********* ");
         scanner = new Scanner(System.in, "Cp866");
 
@@ -18,15 +18,14 @@ public class GuessNumberTest {
 
         guessNumber = new GuessNumber(player1, player2, scanner);
 
-        while(true) {
+        String answer = "";
+        while(!"no".equals(answer)) {
             guessNumber.startGame( );
 
-            while(true) {
+            answer = "";
+            while(!"yes".equals(answer) && !"no".equals(answer)) {
                 System.out.print("Хотите продолжить игру? [yes/no]: ");
-                if("yes".equals(answer)) {
-                    break;
-                } else if("no".equals(answer)) 
-                    return;
+                answer = scanner.next();
             }
         }
     }    

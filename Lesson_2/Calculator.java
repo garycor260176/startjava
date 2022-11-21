@@ -7,16 +7,8 @@ public class Calculator {
         this.num1 = num1;
     }
 
-    public int getNum1() {
-        return num1;
-    }
-
     public void setNum2(int num2) {
         this.num2 = num2;
-    }
-
-    public int getNum2() {
-        return num2;
     }
 
     public boolean setSign(char sign) {
@@ -38,8 +30,6 @@ public class Calculator {
     }
 
     public double calc() {
-        double result = 0.0d;
-
         switch(sign) {
             case '+': 
                 return num1 + num2;
@@ -50,13 +40,13 @@ public class Calculator {
             case '/':
                 return (double) num1 / (double) num2;
             case '^':
-                result = 1.0f;
+                double result = 1.0f;
                 for(int i = 1; i <= num2; i++) 
                     result *= (double) num1;
                 return result;
             case '%':
                 return num1 % num2;
         }
-        return result;
+        return 0;
     }
 }

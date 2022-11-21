@@ -23,36 +23,18 @@ public class GuessNumber {
         } while(!playerNextNum(player1) && !playerNextNum(player2));
     }
 
-    private byte checkNum(int num) {
-        if(num > hiddenNum) {
-            return 1;
-        } else if(num < hiddenNum) {
-            return 2;
-        }
-        return 0;
-    }
-
     private void generateNumber() {
-        hiddenNum = minRange + (int) (Math.random() * 99);
+        hiddenNum = minRange + (int) (Math.random() * 100);
     }
 
     private boolean playerNextNum(Player player){
-        boolean result = false;
         System.out.print(player.getName( ) + ", введите число: ");
         int num = inputNum();
-        switch(checkNum(num)) {
-            case 2:
-                System.out.println("Число " + num + " меньше того, что загадал компьютер.");
-                break;
-            case 1:
-                System.out.println("Число " + num + " больше того, что загадал компьютер.");
-                break;
-            default:
-                result = true;
-                System.out.println("Поздравляем, " + player.getName( ) + ". Вы победили!");
-                break;
+        if(checkNum(num)) {
+            System.out.println(player.getName( ) + ", поздравляем. Вы выиграли!");
+            return true;
         }
-        return result;
+        return false;
     }
 
     private int inputNum() {
@@ -63,5 +45,16 @@ public class GuessNumber {
         }
         num = scanner.nextInt();
         return num;
+    }
+
+    private boolean checkNum(int num) {
+        if(num > hiddenNum) {
+            System.out.println("Число " + num + " больше того, что загадал компьютер.");
+            return false;
+        } else if(num < hiddenNum) {
+            System.out.println("Число " + num + " меньше того, что загадал компьютер.");
+            return false;
+        }
+        return true;
     }
 }

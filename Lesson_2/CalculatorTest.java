@@ -6,15 +6,17 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
 
-        while(true) {
+        String answer = "";
+        while(!"no".equals(answer)) {
             System.out.print("Введите первое число: ");
             calculator.setNum1(inputNum(scanner));
 
             System.out.print("Введите знак математической операции: ");
-            char sign = scanner.next().charAt(0);
-            while(!calculator.setSign(sign)) {
+            while(true) {
+                char sign = scanner.next().charAt(0);
+                if(calculator.setSign(sign))
+                    break;
                 System.out.print("Операция '" + sign +  "' недоступна. Попробуйте снова: ");
-                sign = scanner.next().charAt(0);
             }
 
             System.out.print("Введите второе число: ");
@@ -23,13 +25,10 @@ public class CalculatorTest {
             double result = calculator.calc();
             System.out.println("Результат: " + result);
 
-            while(true) {
+            answer = "";
+            while(!"yes".equals(answer) && !"no".equals(answer)) {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-                String answer = scanner.next();
-                if("yes".equals(answer)) {
-                    break;
-                } else if("no".equals(answer)) 
-                    return;
+                answer = scanner.next();
             }
         }
     }
