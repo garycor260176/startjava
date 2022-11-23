@@ -18,14 +18,14 @@ public class GuessNumber {
         int step = 0;
         do {
             System.out.println("--- Попытка №" + ++step);
-        } while(!playerNextNum(player1) && !playerNextNum(player2));
+        } while(!isGuessed(player1) && !isGuessed(player2));
     }
 
     private void generateNumber() {
         hiddenNum = 1 + (int) (Math.random() * 100);
     }
 
-    private boolean playerNextNum(Player player){
+    private boolean isGuessed(Player player) {
         System.out.print(player.getName( ) + ", введите число: ");
         int num = inputNum();
         if(checkNum(num)) {
@@ -46,13 +46,13 @@ public class GuessNumber {
     }
 
     private boolean checkNum(int num) {
+        if(num == hiddenNum) return true;
+
         if(num > hiddenNum) {
             System.out.println("Число " + num + " больше того, что загадал компьютер.");
-            return false;
         } else if(num < hiddenNum) {
             System.out.println("Число " + num + " меньше того, что загадал компьютер.");
-            return false;
         }
-        return true;
+        return false;
     }
 }

@@ -2,21 +2,16 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
     public static void main(String[] args) {
-        Scanner scanner;
-        GuessNumber guessNumber;
-        Player player1;
-        Player player2;
-
         System.out.println("********* Игра 'Угадай число' ********* ");
-        scanner = new Scanner(System.in, "Cp866");
+        Scanner scanner = new Scanner(System.in, "Cp866");
 
         System.out.print("Введите имя первого игрока: ");
-        player1 = new Player(scanner.nextLine());
+        Player player1 = new Player(scanner.nextLine());
 
         System.out.print("Введите имя второго игрока: ");
-        player2 = new Player(scanner.nextLine());
+        Player player2 = new Player(scanner.nextLine());
 
-        guessNumber = new GuessNumber(player1, player2, scanner);
+        GuessNumber guessNumber = new GuessNumber(player1, player2, scanner);
 
         String answer = "";
         while(!"no".equals(answer)) {
