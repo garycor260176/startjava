@@ -1,4 +1,4 @@
-package com.startjava.lesson_1.final;
+package com.startjava.lesson_1.finish;
 
 //Игра “Угадай число”
 public class MyFirstGame {    
