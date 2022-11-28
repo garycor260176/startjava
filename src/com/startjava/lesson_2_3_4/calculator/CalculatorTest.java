@@ -1,15 +1,30 @@
-package com.startjava.lesson_2_3.calculator;
+package com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Scanner;
 
 public class CalculatorTest {    
 
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
+        Calculator calculator = new Calculator();
 
         String answer = "";
-        while(!"no".equals(answer)) {
+        do {
+            System.out.print("Введите математическое выражение в формате [число] [операция] [число]: ");
+
+            if(calculator.setExpr(scanner.nextLine( )))  System.out.println("Результат: " + calculator.calc());
+
+            do {
+                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+                answer = scanner.next();
+                scanner.nextLine();
+            } while(!"yes".equals(answer) && !"no".equals(answer));
+
+        } while(!"no".equals(answer));
+
+
+/*
+        while() {
             System.out.print("Введите первое число: ");
             calculator.setNum1(inputNum(scanner));
 
@@ -29,8 +44,10 @@ public class CalculatorTest {
                 answer = scanner.next();
             } while(!"yes".equals(answer) && !"no".equals(answer));
         }
+ */
     }
 
+/*
     private static int inputNum(Scanner scanner) {
         int num;
         while(!scanner.hasNextInt()) {
@@ -40,4 +57,5 @@ public class CalculatorTest {
         num = scanner.nextInt();
         return num;
     }
+*/
 }

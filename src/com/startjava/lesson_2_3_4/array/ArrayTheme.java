@@ -3,7 +3,6 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
-
         for(int num : intArr) {
             System.out.print(num + " ");
         }
