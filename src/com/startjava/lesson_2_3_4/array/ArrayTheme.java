@@ -21,36 +21,33 @@ public class ArrayTheme {
         System.out.println("\n\n==== Вывод произведения элементов массива");
         System.out.print("Исходный массив: ");
         int intGenArr[] = new int[10];
-        int skippedCnt = 0;
+        String skippedIdx = "";
+        String formula = "";
+        long multiply = 1;
+        boolean isOperationPrinted = false;
         for(int idx = 0; idx < intGenArr.length; idx++) {
             intGenArr[idx] = (int) ( Math.random() * 10 );
             System.out.print(intGenArr[idx] + " ");
-            skippedCnt += (intGenArr[idx] == 0 || intGenArr[idx] == 9) ? 1 : 0;
-        }
-        System.out.println();
-        long multiply = (skippedCnt == intGenArr.length ? 0 : 1);
-        boolean isOperationPrinted = false;
-        if(multiply == 1) {
-            for(int idx = 0; idx < intGenArr.length; idx++) {
-                boolean skip = intGenArr[idx] == 0 || intGenArr[idx] == 9;
-                multiply *= skip ? 1 : intGenArr[idx];
-                System.out.print((isOperationPrinted && !skip ? " * " : "") + 
-                    ((intGenArr[idx] == 0 || intGenArr[idx] == 9) ? "" : intGenArr[idx]));
-                isOperationPrinted = true;
+            if((intGenArr[idx] == 0 || intGenArr[idx] == 9) ? true : false){
+                skippedIdx = skippedIdx + (skippedIdx.length() > 0 ? ", " + idx : idx);
+            } else {
+                multiply *= intGenArr[idx];
+                formula += (formula.length() > 0 ? " * " + intGenArr[idx] : intGenArr[idx]);
             }
         }
-        System.out.println(" = " + multiply);
+        System.out.println("\n" + formula + " = " + multiply);
+        System.out.println("Пропущены элементы: " + skippedIdx);
 
         System.out.println("\n==== Удаление элементов массива");
         float[] floatArr = new float[15];
         int numbersZeroed = 0;
-        System.out.println("Исходный массив: ");
+        System.out.print("Исходный массив: ");
         for(int idx = 0; idx < floatArr.length; idx++) {
             floatArr[idx] = (float) Math.random();
             if(idx % 8 == 0) System.out.println();
             System.out.printf("%8.3f", floatArr[idx]);
         }
-        System.out.println("\nИзмененный массив: ");
+        System.out.print("\nИзмененный массив: ");
         for(int idx = 0; idx < floatArr.length; idx++) {
             if(idx % 8 == 0) System.out.println();
             if(floatArr[idx] > floatArr[floatArr.length / 2]) {
@@ -60,7 +57,6 @@ public class ArrayTheme {
             System.out.printf("%8.3f", floatArr[idx]);
         }
         System.out.println("\nКоличество обнуленных ячеек: " + numbersZeroed);
-
 
         System.out.println("\n==== Вывод элементов массива лесенкой в обратном порядке");
         char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 
@@ -74,7 +70,7 @@ public class ArrayTheme {
         System.out.println("\n==== Генерация уникальных чисел");
         int[] numbers = new int[30];
         for(int idx = 0; idx < numbers.length; idx++){
-            boolean exist = true;
+            boolean exist;
             do {
                 numbers[idx] = 60 + (int) ( Math.random() * 40 );
                 exist = false;
@@ -89,8 +85,8 @@ public class ArrayTheme {
         }
         System.out.print("Исходный массив: ");
         printArrTask5(numbers);
-        System.out.print("\nОтсортированный массив: ");
         quickSort(numbers, 0, numbers.length - 1);
+        System.out.print("\nОтсортированный массив: ");
         printArrTask5(numbers);
 
         System.out.println("\n\n==== Сдвиг элементов массива");
