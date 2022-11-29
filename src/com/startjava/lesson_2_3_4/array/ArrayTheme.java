@@ -3,6 +3,7 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
+        System.out.println("Исходный массив: ");
         printIntArr(intArr, 0);
         System.out.println();
         int idxFromEnd = intArr.length;
@@ -12,23 +13,24 @@ public class ArrayTheme {
             intArr[i] = intArr[idxFromEnd];
             intArr[idxFromEnd] = tmp;
         }
+        System.out.println("Измененный массив:");
         printIntArr(intArr, 0);
 
         System.out.println("\n\n==== Вывод произведения элементов массива");
         intArr = new int[10];
-        System.out.print("Исходный массив: ");
+        System.out.print("Исходный массив:\n");
         for(int i = 0; i < intArr.length; i++)
             intArr[i] = i;
         printIntArr(intArr, 0);
         System.out.println();
         long multiply = 1;
         boolean isOperationPrinted = false;
+        System.out.print("Результат: ");
         for(int i = 1; i < intArr.length - 1; i++) {
             System.out.print(intArr[i] + (i == intArr.length - 2 ? " = " : " * "));
             multiply *=  intArr[i];
         }
-        System.out.print(multiply);
-        System.out.println("\nИсключены: [0]=" + intArr[0] + ", [9]=" + intArr[9]);
+        System.out.println(multiply + "\nИсключены: [0]=" + intArr[0] + ", [9]=" + intArr[9]);
 
         System.out.println("\n==== Удаление элементов массива");
         float[] floatArr = new float[15];
