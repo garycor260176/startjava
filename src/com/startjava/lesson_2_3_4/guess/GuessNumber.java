@@ -24,8 +24,9 @@ public class GuessNumber {
 
         int step = 0;
         do {
-            System.out.println("--- Попытка №" + ++step);
-        } while(step <= maxNumbersAttempt && !isGuessed(player1) && !isGuessed(player2));
+            if(step < maxNumbersAttempt)
+                System.out.println("--- Попытка №" + ++step);
+        } while(step <= maxNumbersAttempt && !isGuessed());
 
         printPlayerAttempts(player1);
         printPlayerAttempts(player2);
@@ -35,20 +36,31 @@ public class GuessNumber {
         hiddenNum = 1 + (int) (Math.random() * 100);
     }
 
-    private boolean isGuessed(Player player) {
+    private boolean isGuessed() {
+        int resultStepPlayer1 = isPlayerGuessed(player1);
+        if(resultStepPlayer1 == 1) return true;
+        int resultStepPlayer2 = isPlayerGuessed(player2);
+        if(resultStepPlayer2 == 1) return true;
+
+        if(resultStepPlayer1 == 0 && resultStepPlayer2 == 0) return true;
+
+        return false;
+    }
+
+    private int isPlayerGuessed(Player player) {
         if(player.getCurrentAttempt() >= maxNumbersAttempt)
-            return false;
+            return 0;
         System.out.print(player.getName( ) + ", введите число: ");
         int num = inputNum();
         player.addNumber(num);
         if(checkNum(num)) {
             System.out.println("Игрок " + player.getName( ) + " угадал число " + hiddenNum +
                 " с " + player.getCurrentAttempt() + " попытки");
-            return true;
+            return 1;
         }
         if(player.getCurrentAttempt() >= maxNumbersAttempt)
             System.out.println("У " + player.getName() + " закончились попытки");
-        return false;
+        return 2;
     }
 
     private int inputNum() {
