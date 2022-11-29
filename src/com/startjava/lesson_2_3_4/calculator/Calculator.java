@@ -61,11 +61,7 @@ public class Calculator {
         return false;
     }
 
-    public char getSign() {
-        return sign;
-    }
-
-    public double calc() {
+    public double calculate() {
         switch(sign) {
             case '+':
                 return Math.addExact((long) num1, (long) num2);
