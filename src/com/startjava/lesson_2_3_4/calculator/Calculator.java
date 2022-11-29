@@ -4,10 +4,9 @@ public class Calculator {
     private int num1;
     private int num2;
     private char sign;
-    private String[] tokens;
 
     public boolean setExpr(String expr) {
-        tokens = expr.split(" ");
+        String[] tokens = expr.split(" ");
 
         if(tokens.length != 3) {
             System.out.println("Введено не верное выражение.");
