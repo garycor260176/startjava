@@ -3,19 +3,16 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
-        for(int num : intArr) {
-            System.out.print(num + " ");
-        }
+        printArrTask1(intArr);
         System.out.println();
-        for(int idx = 0; idx < intArr.length / 2; idx++) {
-            int idxFromEnd = intArr.length - 1 - idx;
-            intArr[idx] ^= intArr[idxFromEnd];
-            intArr[idxFromEnd] ^= intArr[idx];
-            intArr[idx] ^= intArr[idxFromEnd];
+        int idxFromEnd = intArr.length;
+        for(int i = 0; i < intArr.length / 2; i++) {
+            idxFromEnd--;
+            int tmp = intArr[i];
+            intArr[i] = intArr[idxFromEnd];
+            intArr[idxFromEnd] = tmp;
         }
-        for(int num : intArr) {
-            System.out.print(num + " ");
-        }
+        printArrTask1(intArr);
 
         System.out.println("\n\n==== Вывод произведения элементов массива");
         System.out.print("Исходный массив: ");
@@ -24,14 +21,15 @@ public class ArrayTheme {
         String formula = "";
         long multiply = 1;
         boolean isOperationPrinted = false;
-        for(int idx = 0; idx < intGenArr.length; idx++) {
-            intGenArr[idx] = (int) ( Math.random() * 10 );
-            System.out.print(intGenArr[idx] + " ");
-            if((intGenArr[idx] == 0 || intGenArr[idx] == 9) ? true : false){
-                skippedIdx = skippedIdx + (skippedIdx.length() > 0 ? ", " + idx : idx);
+        for(int i = 0; i < intGenArr.length; i++) {
+            intGenArr[i] = (int) ( Math.random() * 10 );
+            System.out.print(intGenArr[i] + " ");
+            if((intGenArr[i] == 0 || intGenArr[i] == 9) ? true : false){
+                String outElement = "[" + i + "]=" + intGenArr[i];
+                skippedIdx = skippedIdx + (skippedIdx.length() > 0 ? ", " + outElement : outElement);
             } else {
-                multiply *= intGenArr[idx];
-                formula += (formula.length() > 0 ? " * " + intGenArr[idx] : intGenArr[idx]);
+                multiply *= intGenArr[i];
+                formula += (formula.length() > 0 ? " * " + intGenArr[i] : intGenArr[i]);
             }
         }
         System.out.println("\n" + formula + " = " + multiply);
@@ -41,40 +39,41 @@ public class ArrayTheme {
         float[] floatArr = new float[15];
         int numbersZeroed = 0;
         System.out.print("Исходный массив: ");
-        for(int idx = 0; idx < floatArr.length; idx++) {
-            floatArr[idx] = (float) Math.random();
-            if(idx % 8 == 0) System.out.println();
-            System.out.printf("%8.3f", floatArr[idx]);
+        for(int i = 0; i < floatArr.length; i++) {
+            floatArr[i] = (float) Math.random();
+            if(i % 8 == 0) System.out.println();
+            System.out.printf("%8.3f", floatArr[i]);
         }
         System.out.print("\nИзмененный массив: ");
-        for(int idx = 0; idx < floatArr.length; idx++) {
-            if(idx % 8 == 0) System.out.println();
-            if(floatArr[idx] > floatArr[floatArr.length / 2]) {
-                floatArr[idx] = 0;
+        int idxBase = floatArr.length / 2;
+        for(int i = 0; i < floatArr.length; i++) {
+            if(i % 8 == 0) System.out.println();
+            if(floatArr[i] > floatArr[idxBase]) {
+                floatArr[i] = 0;
                 numbersZeroed++;
             }
-            System.out.printf("%8.3f", floatArr[idx]);
+            System.out.printf("%8.3f", floatArr[i]);
         }
         System.out.println("\nКоличество обнуленных ячеек: " + numbersZeroed);
 
         System.out.println("\n==== Вывод элементов массива лесенкой в обратном порядке");
         char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 
             'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Y', 'Z'};
-        for(int numRow = letters.length - 1; numRow >=0; numRow--){
-            for(int numnLetter = letters.length - 1; numnLetter >= numRow; numnLetter--)
-                System.out.print(letters[numnLetter]);
+        for(int i = letters.length - 1; i >=0; i--){
+            for(int j = letters.length - 1; j >= i; j--)
+                System.out.print(letters[j]);
             System.out.println();
         }
 
         System.out.println("\n==== Генерация уникальных чисел");
         int[] numbers = new int[30];
-        for(int idx = 0; idx < numbers.length; idx++){
+        for(int i = 0; i < numbers.length; i++){
             boolean exist;
             do {
-                numbers[idx] = 60 + (int) ( Math.random() * 40 );
+                numbers[i] = 60 + (int) ( Math.random() * 40 );
                 exist = false;
-                for(int i = 0; i < idx; i++) {
-                    if(numbers[i] == numbers[idx]) {
+                for(int j = 0; j < i; j++) {
+                    if(numbers[j] == numbers[i]) {
                         exist = true;
                         break;
                     }
@@ -96,22 +95,27 @@ public class ArrayTheme {
         }
         String[] destArr = new String[numbersNoEmpty];
         int startCopyRange = -1;
-        int cntNum = -1;
         int nextDestStartRange = 0;
-        for(int idx = 0; idx < srcArr.length; idx++) {
-            if(srcArr[idx].isBlank() || idx == srcArr.length - 1) {
-                if(startCopyRange >= 0 || idx == srcArr.length - 1) {
+        for(int i = 0; i < srcArr.length; i++) {
+            if(srcArr[i].isBlank() || i == srcArr.length - 1) {
+                if(startCopyRange >= 0 || i == srcArr.length - 1) {
                     System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange, 
-                        idx - startCopyRange + (idx == srcArr.length - 1 ? 1 : 0));
-                    nextDestStartRange += idx - startCopyRange;
+                        i - startCopyRange + (i == srcArr.length - 1 ? 1 : 0));
+                    nextDestStartRange += i - startCopyRange;
                 }
                 startCopyRange = -1;
             } else {
-                if(startCopyRange < 0) startCopyRange = idx;
+                if(startCopyRange < 0) startCopyRange = i;
             }
         }
         for(String element : destArr) {
             System.out.println(element);
+        }
+    }
+
+    private static void printArrTask1(int[] array){
+        for(int num : array) {
+            System.out.print(num + " ");
         }
     }
 
