@@ -18,14 +18,14 @@ public class ArrayTheme {
 
         System.out.println("\n\n==== Вывод произведения элементов массива");
         intArr = new int[10];
-        System.out.print("Исходный массив:\n");
+        System.out.println("Исходный массив:");
         for(int i = 0; i < intArr.length; i++)
             intArr[i] = i;
         printIntArr(intArr, 0);
         System.out.println();
         long multiply = 1;
         boolean isOperationPrinted = false;
-        System.out.print("Результат: ");
+        System.out.println("Результат: ");
         for(int i = 1; i < intArr.length - 1; i++) {
             System.out.print(intArr[i] + (i == intArr.length - 2 ? " = " : " * "));
             multiply *=  intArr[i];
