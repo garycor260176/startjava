@@ -3,7 +3,7 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
-        printIntArr(intArr);
+        printIntArr(intArr, 0);
         System.out.println();
         int idxFromEnd = intArr.length;
         for(int i = 0; i < intArr.length / 2; i++) {
@@ -12,14 +12,14 @@ public class ArrayTheme {
             intArr[i] = intArr[idxFromEnd];
             intArr[idxFromEnd] = tmp;
         }
-        printIntArr(intArr);
+        printIntArr(intArr, 0);
 
         System.out.println("\n\n==== Вывод произведения элементов массива");
         intArr = new int[10];
         System.out.print("Исходный массив: ");
         for(int i = 0; i < intArr.length; i++)
             intArr[i] = i;
-        printIntArr(intArr);
+        printIntArr(intArr, 0);
         System.out.println();
         long multiply = 1;
         boolean isOperationPrinted = false;
@@ -34,21 +34,18 @@ public class ArrayTheme {
         float[] floatArr = new float[15];
         int numbersZeroed = 0;
         System.out.print("Исходный массив: ");
-        for(int i = 0; i < floatArr.length; i++) {
+        for(int i = 0; i < floatArr.length; i++)
             floatArr[i] = (float) Math.random();
-            if(i % 8 == 0) System.out.println();
-            System.out.printf("%8.3f", floatArr[i]);
-        }
+        printFloatArr(floatArr, 8);
         System.out.print("\nИзмененный массив: ");
         float numBase = floatArr[floatArr.length / 2];
         for(int i = 0; i < floatArr.length; i++) {
-            if(i % 8 == 0) System.out.println();
             if(floatArr[i] > numBase) {
                 floatArr[i] = 0;
                 numbersZeroed++;
             }
-            System.out.printf("%8.3f", floatArr[i]);
         }
+        printFloatArr(floatArr, 8);
         System.out.println("\nКоличество обнуленных ячеек: " + numbersZeroed);
 
         System.out.println("\n==== Вывод элементов массива лесенкой в обратном порядке");
@@ -76,10 +73,10 @@ public class ArrayTheme {
             } while(exist);
         }
         System.out.print("Исходный массив: ");
-        printArrTask5(numbers);
+        printIntArr(numbers, 10);
         quickSort(numbers, 0, numbers.length - 1);
         System.out.print("\nОтсортированный массив: ");
-        printArrTask5(numbers);
+        printIntArr(numbers, 10);
 
         System.out.println("\n\n==== Сдвиг элементов массива");
         String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
@@ -109,23 +106,17 @@ public class ArrayTheme {
         printStringArr(destArr);
     }
 
-    private static void printIntArr(int[] array){
-        for(int num : array) {
-            System.out.print(num + " ");
-        }
-    }
-    private static void printStringArr(String[] array){
-        System.out.print("{");
+    private static void printIntArr(int[] array, int elementOnRow){
         for(int i = 0; i < array.length; i++) {
-            System.out.print("\"" + array[i]  + "\"" + (i < array.length - 1 ? ", " : ""));
+            if(elementOnRow > 0 && i % elementOnRow == 0) System.out.println();
+            System.out.printf("%5d", array[i]);
         }
-        System.out.print("}");
     }
 
-    private static void printArrTask5(int[] array){
-        for(int num = 0; num < array.length; num++) {
-            if(num % 10 == 0) System.out.println();
-            System.out.printf("%5d", array[num]);
+    private static void printFloatArr(float[] array, int elementOnRow) {
+        for(int i = 0; i < array.length; i++) {
+            if(elementOnRow > 0 && i % elementOnRow == 0) System.out.println();
+            System.out.printf("%8.3f", array[i]);
         }
     }
 
@@ -154,4 +145,13 @@ public class ArrayTheme {
 
         return counter;
     }
+
+    private static void printStringArr(String[] array){
+        System.out.print("{");
+        for(int i = 0; i < array.length; i++) {
+            System.out.print("\"" + array[i]  + "\"" + (i < array.length - 1 ? ", " : ""));
+        }
+        System.out.print("}");
+    }
+
 }
