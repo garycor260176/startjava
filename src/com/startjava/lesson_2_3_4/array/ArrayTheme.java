@@ -3,7 +3,7 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
-        printArrTask1_2(intArr);
+        printIntArr(intArr);
         System.out.println();
         int idxFromEnd = intArr.length;
         for(int i = 0; i < intArr.length / 2; i++) {
@@ -12,14 +12,14 @@ public class ArrayTheme {
             intArr[i] = intArr[idxFromEnd];
             intArr[idxFromEnd] = tmp;
         }
-        printArrTask1_2(intArr);
+        printIntArr(intArr);
 
         System.out.println("\n\n==== Вывод произведения элементов массива");
         intArr = new int[10];
         System.out.print("Исходный массив: ");
         for(int i = 0; i < intArr.length; i++)
             intArr[i] = i;
-        printArrTask1_2(intArr);
+        printIntArr(intArr);
         System.out.println();
         long multiply = 1;
         boolean isOperationPrinted = false;
@@ -40,10 +40,10 @@ public class ArrayTheme {
             System.out.printf("%8.3f", floatArr[i]);
         }
         System.out.print("\nИзмененный массив: ");
-        int idxBase = floatArr.length / 2;
+        float numBase = floatArr[floatArr.length / 2];
         for(int i = 0; i < floatArr.length; i++) {
             if(i % 8 == 0) System.out.println();
-            if(floatArr[i] > floatArr[idxBase]) {
+            if(floatArr[i] > numBase) {
                 floatArr[i] = 0;
                 numbersZeroed++;
             }
@@ -74,7 +74,6 @@ public class ArrayTheme {
                     }
                 }
             } while(exist);
-
         }
         System.out.print("Исходный массив: ");
         printArrTask5(numbers);
@@ -83,10 +82,13 @@ public class ArrayTheme {
         printArrTask5(numbers);
 
         System.out.println("\n\n==== Сдвиг элементов массива");
-        String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", "D"};
+        String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        System.out.print("Исходный массив: ");
+        printStringArr(srcArr);
+        System.out.println();
         int numbersNoEmpty = 0;
         for(String element : srcArr) {
-            numbersNoEmpty += (element.replaceAll("\\s+", "").length() == 0 ? 0 : 1);
+            numbersNoEmpty += (element.isBlank() ? 0 : 1);
         }
         String[] destArr = new String[numbersNoEmpty];
         int startCopyRange = -1;
@@ -94,8 +96,8 @@ public class ArrayTheme {
         for(int i = 0; i < srcArr.length; i++) {
             if(srcArr[i].isBlank() || i == srcArr.length - 1) {
                 if(startCopyRange >= 0 || i == srcArr.length - 1) {
-                    System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange, 
-                        i - startCopyRange + (i == srcArr.length - 1 ? 1 : 0));
+                    System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange,
+                            i - startCopyRange + (srcArr[i].isBlank() ? 0 : 1));
                     nextDestStartRange += i - startCopyRange;
                 }
                 startCopyRange = -1;
@@ -103,15 +105,21 @@ public class ArrayTheme {
                 if(startCopyRange < 0) startCopyRange = i;
             }
         }
-        for(String element : destArr) {
-            System.out.println(element);
-        }
+        System.out.print("Результат: ");
+        printStringArr(destArr);
     }
 
-    private static void printArrTask1_2(int[] array){
+    private static void printIntArr(int[] array){
         for(int num : array) {
             System.out.print(num + " ");
         }
+    }
+    private static void printStringArr(String[] array){
+        System.out.print("{");
+        for(int i = 0; i < array.length; i++) {
+            System.out.print("\"" + array[i]  + "\"" + (i < array.length - 1 ? ", " : ""));
+        }
+        System.out.print("}");
     }
 
     private static void printArrTask5(int[] array){
