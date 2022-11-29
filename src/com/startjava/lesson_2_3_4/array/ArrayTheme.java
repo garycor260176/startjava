@@ -3,7 +3,7 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
-        printArrTask1(intArr);
+        printArrTask1_2(intArr);
         System.out.println();
         int idxFromEnd = intArr.length;
         for(int i = 0; i < intArr.length / 2; i++) {
@@ -12,28 +12,23 @@ public class ArrayTheme {
             intArr[i] = intArr[idxFromEnd];
             intArr[idxFromEnd] = tmp;
         }
-        printArrTask1(intArr);
+        printArrTask1_2(intArr);
 
         System.out.println("\n\n==== Вывод произведения элементов массива");
+        intArr = new int[10];
         System.out.print("Исходный массив: ");
-        int intGenArr[] = new int[10];
-        String skippedIdx = "";
-        String formula = "";
+        for(int i = 0; i < intArr.length; i++)
+            intArr[i] = i;
+        printArrTask1_2(intArr);
+        System.out.println();
         long multiply = 1;
         boolean isOperationPrinted = false;
-        for(int i = 0; i < intGenArr.length; i++) {
-            intGenArr[i] = (int) ( Math.random() * 10 );
-            System.out.print(intGenArr[i] + " ");
-            if((intGenArr[i] == 0 || intGenArr[i] == 9) ? true : false){
-                String outElement = "[" + i + "]=" + intGenArr[i];
-                skippedIdx = skippedIdx + (skippedIdx.length() > 0 ? ", " + outElement : outElement);
-            } else {
-                multiply *= intGenArr[i];
-                formula += (formula.length() > 0 ? " * " + intGenArr[i] : intGenArr[i]);
-            }
+        for(int i = 1; i < intArr.length - 1; i++) {
+            System.out.print(intArr[i] + (i == intArr.length - 2 ? " = " : " * "));
+            multiply *=  intArr[i];
         }
-        System.out.println("\n" + formula + " = " + multiply);
-        System.out.println("Пропущены элементы: " + skippedIdx);
+        System.out.print(multiply);
+        System.out.println("\nИсключены: [0]=" + intArr[0] + ", [9]=" + intArr[9]);
 
         System.out.println("\n==== Удаление элементов массива");
         float[] floatArr = new float[15];
@@ -113,7 +108,7 @@ public class ArrayTheme {
         }
     }
 
-    private static void printArrTask1(int[] array){
+    private static void printArrTask1_2(int[] array){
         for(int num : array) {
             System.out.print(num + " ");
         }
