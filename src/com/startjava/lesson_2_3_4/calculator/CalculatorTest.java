@@ -14,11 +14,11 @@ public class CalculatorTest {
 
             /*
             if(calculator.setExpr(scanner.nextLine( )))
-                System.out.println("Результат: " + calculator.calculate());
+                System.out.println("Результат: " + calculator.calc());
             */
-            
+
             try {
-                System.out.println("Результат: " + calculator.calc(scanner.nextLine( )));
+                System.out.println("Результат: " + calculator.calculate(scanner.nextLine( )));
             } catch (IncorrectExpression err) {
                 System.out.println(err.getMessage());
             }

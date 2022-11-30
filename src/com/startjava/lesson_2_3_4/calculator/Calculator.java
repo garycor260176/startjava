@@ -60,7 +60,7 @@ public class Calculator {
         return false;
     }
 
-    public double calculate() {
+    public double calc() {
         switch(sign) {
             case '+':
                 return Math.addExact((long) num1, (long) num2);
@@ -78,7 +78,7 @@ public class Calculator {
         return 0;
     }
 
-    public static double calc(String expr) throws IncorrectExpression {
+    public static double calculate(String expr) throws IncorrectExpression {
         String[] tokens = expr.split(" ");
 
         if(tokens.length != 3) {
