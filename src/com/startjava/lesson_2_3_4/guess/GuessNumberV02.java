@@ -34,24 +34,15 @@ public class GuessNumberV02 {
         int maxWins = players[0].getNumbersWin();
         int idxWinners[] = new int[players.length];
         int numberWinners = 0;
-        for(int i = 0; i < players.length; i++ ) {
+        for (int i = 0; i < players.length; i++) {
             System.out.println("Игрок '" + players[i].getName() + "': " + players[i].getNumbersWin());
-            if(players[i].getNumbersWin() == maxWins)
+            if(maxWins > 0 && players[i].getNumbersWin() == maxWins)
                 idxWinners[numberWinners++] = i;
         }
-        switch(numberWinners) {
-            case 0:
-                System.out.print("Нет победителя");
-                break;
-            case 1:
-                System.out.print("Победитель: ");
-                break;
-            default:
-                System.out.print("Ничья: ");
-                break;
-        }
+        System.out.print(numberWinners == 0 ? "Нет победителя" : numberWinners == 1 ? "Победитель: " : "Ничья: ");
+
         for(int i = 0; i < numberWinners; i++) {
-            System.out.print(players[i].getName());
+            System.out.print(players[i].getName() + ( i == numberWinners - 1 ? "" : ", "));
         }
         System.out.println("\n=====================================");
     }
@@ -106,7 +97,7 @@ public class GuessNumberV02 {
     private int isPlayerGuessed(Player player) {
         if(player.getCurrentAttempt() >= maxNumbersAttempt)
             return 0;
-        System.out.print(player.getName( ) + ", введите число: ");
+        System.out.print("Игрок " + player.getName( ) + ", введите число: ");
 
         int num;
         do {
