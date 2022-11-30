@@ -12,17 +12,15 @@ public class CalculatorTest {
         do {
             System.out.print("Введите математическое выражение в формате [число] [операция] [число]: ");
 
-            /*
             if(calculator.setExpr(scanner.nextLine( )))
                 System.out.println("Результат: " + calculator.calc());
-            */
 
-            try {
+/*            try {
                 System.out.println("Результат: " + calculator.calculate(scanner.nextLine( )));
             } catch (IncorrectExpression err) {
                 System.out.println(err.getMessage());
             }
-
+*/
             do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
                 answer = scanner.nextLine();
