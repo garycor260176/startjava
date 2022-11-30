@@ -27,10 +27,10 @@ public class ArrayTheme {
         boolean isOperationPrinted = false;
         System.out.println("Результат: ");
         for(int i = 1; i < intArr.length - 1; i++) {
-            System.out.print(intArr[i] + (i == intArr.length - 2 ? " = " : " * "));
             multiply *=  intArr[i];
+            System.out.print(intArr[i] + (i == intArr.length - 2 ? " = " + multiply : " * "));
         }
-        System.out.println(multiply + "\nИсключены: [0]=" + intArr[0] + ", [9]=" + intArr[9]);
+        System.out.println("\nИсключены: [0]=" + intArr[0] + ", [9]=" + intArr[9]);
 
         System.out.println("\n==== Удаление элементов массива");
         float[] floatArr = new float[15];
