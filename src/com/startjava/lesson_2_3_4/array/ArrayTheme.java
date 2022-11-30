@@ -51,8 +51,10 @@ public class ArrayTheme {
         System.out.println("\nКоличество обнуленных ячеек: " + numbersZeroed);
 
         System.out.println("\n==== Вывод элементов массива лесенкой в обратном порядке");
-        char letters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 
-            'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Y', 'Z'};
+        char letters[] = new char[26];
+        for (int i = 0; i < 26; i++) {
+            letters[i] = (char) ('A' + i);
+        }
         for(int i = letters.length - 1; i >=0; i--){
             for(int j = letters.length - 1; j >= i; j--)
                 System.out.print(letters[j]);

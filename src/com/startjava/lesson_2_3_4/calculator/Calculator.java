@@ -78,7 +78,7 @@ public class Calculator {
         return 0;
     }
 
-    public static double calculate(String expr) throws IncorrectExpression {
+    public static double calculate(String expr) {
         String[] tokens = expr.split(" ");
 
         if(tokens.length != 3) {
