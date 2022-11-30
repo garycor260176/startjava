@@ -17,7 +17,11 @@ public class GuessNumberTest {
         System.out.print("Введите имя второго игрока: ");
         Player player2 = new Player(scanner.nextLine(), maxNumbersAttempt);
 
-        GuessNumber guessNumber = new GuessNumber(maxNumbersAttempt, player1, player2, scanner);
+        System.out.print("Введите имя третьего игрока: ");
+        Player player3 = new Player(scanner.nextLine(), maxNumbersAttempt);
+
+        GuessNumber guessNumber = new GuessNumber(maxNumbersAttempt, scanner, player1, player2);
+        //GuessNumberV02 guessNumber = new GuessNumberV02(3, maxNumbersAttempt, scanner, player1, player2, player3);
 
         String answer = "";
         while(!"no".equals(answer)) {

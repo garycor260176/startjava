@@ -88,6 +88,8 @@ public class Calculator {
         int num1;
         try {
             num1 = Integer.parseInt(tokens[0]);
+            if(num1 < 0)
+                throw new IncorrectExpression("Значение '" + tokens[0] + "' должно быть положительным.");
         } catch (NumberFormatException err) {
             throw new IncorrectExpression("Значение '" + tokens[0] + "' не является числом.", err);
         }
@@ -95,6 +97,8 @@ public class Calculator {
         int num2;
         try {
             num2 = Integer.parseInt(tokens[2]);
+            if(num2 < 0)
+                throw new IncorrectExpression("Значение '" + tokens[0] + "' должно быть положительным.");
         } catch (NumberFormatException err) {
             throw new IncorrectExpression("Значение '" + tokens[2] + "' не является числом.", err);
         }

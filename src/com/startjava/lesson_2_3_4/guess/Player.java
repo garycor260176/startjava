@@ -7,6 +7,8 @@ public class Player {
     private int numbers[];
     private int currentAttempt;
     private int maxNumbersAttempt;
+
+    private int numbersWin;
     
     public Player(String name, int maxNumbersAttempt) {
         this.numbers = new int[maxNumbersAttempt];
@@ -23,12 +25,11 @@ public class Player {
         return currentAttempt;
     }
 
-
     public void clear() {
         if(currentAttempt > 0)
             Arrays.fill(numbers, 0, currentAttempt - 1, 0);
 
-        this.currentAttempt = 0;
+        currentAttempt = 0;
     }
 
     public int[] getAttempts(){
@@ -46,5 +47,13 @@ public class Player {
         numbers[currentAttempt] = num;
         currentAttempt++;
         return true;
+    }
+
+     public int getNumbersWin() {
+        return numbersWin;
+    }
+
+    public void setNumbersWin(int numbersWin) {
+        this.numbersWin = numbersWin;
     }
 }
