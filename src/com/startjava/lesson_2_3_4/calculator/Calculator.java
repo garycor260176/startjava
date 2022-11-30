@@ -1,6 +1,6 @@
 package com.startjava.lesson_2_3_4.calculator;
 
-public class Calculator { 
+public class Calculator {
     private int num1;
     private int num2;
     private char sign;
@@ -76,5 +76,42 @@ public class Calculator {
                 return num1 % num2;
         }
         return 0;
+    }
+
+    public static double calc(String expr) throws IncorrectExpression {
+ //IncorrectExpression
+        String[] tokens = expr.split(" ");
+
+        if(tokens.length != 3) {
+            throw new IncorrectExpression("Не верное выражение" );
+        }
+
+        int num1;
+        try {
+            num1 = Integer.parseInt(tokens[0]);
+        } catch (NumberFormatException err) {
+            throw new IncorrectExpression("Значение '" + tokens[0] + "' не является числом.", err);
+        }
+
+        int num2;
+        try {
+            num2 = Integer.parseInt(tokens[2]);
+        } catch (NumberFormatException err) {
+            throw new IncorrectExpression("Значение '" + tokens[2] + "' не является числом.", err);
+        }
+
+        try {
+            return switch(tokens[1]) {
+                case "+" -> Math.addExact((long) num1, (long) num2);
+                case "-" -> Math.subtractExact((long) num1, (long) num2);
+                case "*" -> Math.multiplyExact((long) num1, (long) num2);
+                case "/" -> (double) num1 / (double) num2;
+                case "^" -> Math.pow(num1, num2);
+                case "%" -> num1 % num2;
+                default -> throw new IncorrectExpression("Операция '" + tokens[1] + "' не обрабатывается" );
+            };
+        } catch (ArithmeticException  err) {
+            throw new IncorrectExpression("Произошла недопустимая арифметическая операция", err);
+        }
     }
 }

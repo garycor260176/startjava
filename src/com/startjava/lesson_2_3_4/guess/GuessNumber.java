@@ -51,13 +51,21 @@ public class GuessNumber {
         if(player.getCurrentAttempt() >= maxNumbersAttempt)
             return 0;
         System.out.print(player.getName( ) + ", введите число: ");
-        int num = inputNum();
-        player.addNumber(num);
-        if(checkNum(num)) {
+
+        int num;
+        do {
+            num = inputNum();
+        } while(!player.addNumber(num));
+
+        if(num == hiddenNum) {
             System.out.println("Игрок " + player.getName( ) + " угадал число " + hiddenNum +
-                " с " + player.getCurrentAttempt() + " попытки");
+                    " с " + player.getCurrentAttempt() + " попытки");
             return 1;
         }
+
+        System.out.println("Число " + num + (num > hiddenNum ? " больше" : " меньше") +
+            " того, что загадал компьютер.");
+
         if(player.getCurrentAttempt() >= maxNumbersAttempt)
             System.out.println("У " + player.getName() + " закончились попытки");
         return 2;
@@ -71,17 +79,6 @@ public class GuessNumber {
         }
         num = scanner.nextInt();
         return num;
-    }
-
-    private boolean checkNum(int num) {
-        if(num == hiddenNum) return true;
-
-        if(num > hiddenNum) {
-            System.out.println("Число " + num + " больше того, что загадал компьютер.");
-        } else if(num < hiddenNum) {
-            System.out.println("Число " + num + " меньше того, что загадал компьютер.");
-        }
-        return false;
     }
 
     private void printPlayerAttempts(Player player) {
