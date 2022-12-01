@@ -10,10 +10,10 @@ public class Player {
 
     private int numbersWin;
     
-    public Player(String name, int maxNumbersAttempt) {
-        this.numbers = new int[maxNumbersAttempt];
+    public Player(String name) {
+        //this.numbers = new int[maxNumbersAttempt];
         this.name = name;
-        this.maxNumbersAttempt = maxNumbersAttempt;
+        //this.maxNumbersAttempt = maxNumbersAttempt;
         clear();
     }
 
@@ -55,5 +55,10 @@ public class Player {
 
     public void setNumbersWin(int numbersWin) {
         this.numbersWin = numbersWin;
+    }
+
+    public void setMaxNumbersAttempt(int maxNumbersAttempt) {
+        this.maxNumbersAttempt = maxNumbersAttempt;
+        numbers = new int[this.maxNumbersAttempt];
     }
 }

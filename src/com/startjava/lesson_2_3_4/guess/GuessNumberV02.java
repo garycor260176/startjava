@@ -14,6 +14,8 @@ public class GuessNumberV02 {
          this.maxNumbersAttempt = maxNumbersAttempt;
          this.players = players;
          this.numbersRound = numbersRound;
+         for(Player player : this.players)
+             player.setMaxNumbersAttempt(maxNumbersAttempt);
     }
 
     public void startGame() {

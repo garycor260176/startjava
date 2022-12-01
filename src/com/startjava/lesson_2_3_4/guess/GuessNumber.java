@@ -11,7 +11,9 @@ public class GuessNumber {
 
     public GuessNumber(int maxNumbersAttempt, Scanner scanner, Player player1, Player player2) {
         this.player1 = player1;
+        this.player1.setMaxNumbersAttempt(maxNumbersAttempt);
         this.player2 = player2;
+        this.player2.setMaxNumbersAttempt(maxNumbersAttempt);
         this.scanner = scanner;
         this.maxNumbersAttempt = maxNumbersAttempt;
     }
