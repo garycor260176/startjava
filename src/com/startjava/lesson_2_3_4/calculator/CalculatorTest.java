@@ -16,11 +16,11 @@ public class CalculatorTest {
                 System.out.println("Результат: " + calculator.calc());
 
 /*            try {
-                System.out.println("Результат: " + calculator.calculate(scanner.nextLine( )));
+                System.out.println("Результат: " + Calculator.calculate(scanner.nextLine( )));
             } catch (IncorrectExpression err) {
                 System.out.println(err.getMessage());
-            }
-*/
+            }*/
+
             do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
                 answer = scanner.nextLine();
