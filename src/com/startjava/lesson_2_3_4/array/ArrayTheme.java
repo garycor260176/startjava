@@ -1,13 +1,11 @@
 public class ArrayTheme {
 
     public static void main(String[] args) {
-        int len;
-
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
         System.out.println("Исходный массив: ");
         printIntArr(intArr, 0);
-        len = intArr.length;
+        int len = intArr.length;
         for(int i = 0; i < len / 2; i++) {
             len--;
             int tmp = intArr[i];
@@ -24,11 +22,12 @@ public class ArrayTheme {
         for(int i = 0; i < len; i++)
             intArr[i] = i;
         printIntArr(intArr, 0);
-        long multiply = 1;
+
+        long multDigits = 1;
         System.out.println("Результат: ");
         for(int i = 1; i < len - 1; i++) {
-            multiply *=  intArr[i];
-            System.out.print(intArr[i] + (i == intArr.length - 2 ? " = " + multiply : " * "));
+            multDigits *=  intArr[i];
+            System.out.print(intArr[i] + (i < len - 2 ? " * " : " = " + multDigits));
         }
         System.out.println("\nИсключены: [0]=" + intArr[0] + ", [9]=" + intArr[9]);
 
@@ -40,6 +39,7 @@ public class ArrayTheme {
         for(int i = 0; i < len; i++)
             floatArr[i] = (float) Math.random();
         printFloatArr(floatArr, 8);
+
         System.out.print("\nИзмененный массив: ");
         float middleNumber = floatArr[len / 2];
         for(int i = 0; i < len; i++) {
@@ -68,22 +68,23 @@ public class ArrayTheme {
         len = uniqueNumbers.length;
         for(int i = 0; i < len; i++) {
             boolean unique;
-            int genNum;
+            int genNumber;
             do {
-                genNum = 60 + (int) (Math.random() * 40);
+                genNumber = 60 + (int) (Math.random() * 40);
                 unique = false;
                 for(int j = 0; j < i; j++) {
-                    if(genNum == uniqueNumbers[i]) {
+                    if(genNumber == uniqueNumbers[i]) {
                         unique = true;
                         break;
                     }
                 }
             } while(unique);
-            uniqueNumbers[i] = genNum;
 
+            uniqueNumbers[i] = genNumber;
         }
         System.out.print("Исходный массив: ");
         printIntArr(uniqueNumbers, 10);
+
         quickSort(uniqueNumbers, 0, uniqueNumbers.length - 1);
         System.out.print("Отсортированный массив: ");
         printIntArr(uniqueNumbers, 10);
@@ -92,20 +93,21 @@ public class ArrayTheme {
         String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         System.out.print("Исходный массив: ");
         printStringArr(srcArr);
-        int numbersNoEmpty = 0;
+        int newLen = 0;
         for(String element : srcArr) {
-            if(!element.isBlank()) numbersNoEmpty++;
+            if(!element.isBlank()) newLen++;
         }
-        String[] destArr = new String[numbersNoEmpty];
+
+        String[] destArr = new String[newLen];
         int startCopyRange = -1;
         int nextDestStartRange = 0;
         len = srcArr.length;
         for(int i = 0; i < len; i++) {
-            int noEmptyNum = srcArr[i].isBlank() ? 0 : 1;
-            if(noEmptyNum == 0 || i == len - 1) {
+            int EmptyElement = srcArr[i].isBlank() ? 0 : 1;
+            if(EmptyElement == 0 || i == len - 1) {
+                int copyElements = i - startCopyRange + EmptyElement;
                 if(startCopyRange >= 0 || i == len - 1) {
-                    System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange,
-                            i - startCopyRange + noEmptyNum);
+                    System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange, copyElements);
                     nextDestStartRange += i - startCopyRange;
                 }
                 startCopyRange = -1;
@@ -117,54 +119,55 @@ public class ArrayTheme {
         printStringArr(destArr);
     }
 
-    private static void printIntArr(int[] array, int elementOnRow) {
-        int len = array.length;
+    private static void printIntArr(int[] arr, int columns) {
+        int len = arr.length;
         for(int i = 0; i < len; i++) {
-            if(elementOnRow > 0 && i % elementOnRow == 0) System.out.println();
-            System.out.printf("%5d", array[i]);
+            if(columns > 0 && i % columns == 0) System.out.println();
+            System.out.printf("%5d", arr[i]);
         }
         System.out.println();
     }
 
-    private static void printFloatArr(float[] array, int elementOnRow) {
-        int len = array.length;
+    private static void printFloatArr(float[] arr, int columns) {
+        int len = arr.length;
         for(int i = 0; i < len; i++) {
-            if(elementOnRow > 0 && i % elementOnRow == 0) System.out.println();
-            System.out.printf("%8.3f", array[i]);
+            if(columns > 0 && i % columns == 0) System.out.println();
+            System.out.printf("%8.3f", arr[i]);
         }
     }
 
-    private static void quickSort(int[] array, int begin, int end) {  
+    private static void quickSort(int[] arr, int begin, int end) {
         if (end <= begin) return;
-        int pivot = partition(array, begin, end);
-        quickSort(array, begin, pivot-1);
-        quickSort(array, pivot+1, end);
+        int pivot = partition(arr, begin, end);
+        quickSort(arr, begin, pivot-1);
+        quickSort(arr, pivot+1, end);
     }
 
-    private static int partition(int[] array, int begin, int end) {  
+    private static int partition(int[] arr, int begin, int end) {
         int pivot = end;
 
         int counter = begin;
         for (int i = begin; i < end; i++) {
-            if (array[i] < array[pivot]) {
-                int temp = array[counter];
-                array[counter] = array[i];
-                array[i] = temp;
+            if (arr[i] < arr[pivot]) {
+                int temp = arr[counter];
+                arr[counter] = arr[i];
+                arr[i] = temp;
                 counter++;
             }
         }
-        int temp = array[pivot];
-        array[pivot] = array[counter];
-        array[counter] = temp;
+
+        int temp = arr[pivot];
+        arr[pivot] = arr[counter];
+        arr[counter] = temp;
 
         return counter;
     }
 
-    private static void printStringArr(String[] array) {
+    private static void printStringArr(String[] arr) {
         System.out.print("{");
-        int len = array.length;
+        int len = arr.length;
         for(int i = 0; i < len; i++) {
-            System.out.print("\"" + array[i]  + "\"" + (i < len - 1 ? ", " : ""));
+            System.out.print("\"" + arr[i]  + "\"" + (i < len - 1 ? ", " : ""));
         }
         System.out.print("}");
         System.out.println();
