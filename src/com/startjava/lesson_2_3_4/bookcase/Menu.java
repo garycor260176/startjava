@@ -56,7 +56,7 @@ public class Menu {
         }
     }
 
-    private int inputNum(String label, String errMsg){
+    private int inputNum(String label, String errMsg) {
         if(label.length() > 0)
             System.out.print(label);
         while(true) {

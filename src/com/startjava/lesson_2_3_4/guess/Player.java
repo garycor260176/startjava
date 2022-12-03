@@ -32,11 +32,11 @@ public class Player {
         currentAttempt = 0;
     }
 
-    public int[] getAttempts(){
+    public int[] getAttempts() {
         return Arrays.copyOf(numbers, currentAttempt);
     }
 
-    public boolean addNumber(int num){
+    public boolean addNumber(int num) {
         if(currentAttempt >= maxNumbersAttempt) return false;
 
         if(num < 1 || num > 100) {
