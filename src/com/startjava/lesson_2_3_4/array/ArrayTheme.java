@@ -1,32 +1,32 @@
 public class ArrayTheme {
 
     public static void main(String[] args) {
+        int len;
+
         System.out.println("==== Реверс значений массива");
         int intArr[] = {1, 7, 4, 3, 5, 6, 2};
         System.out.println("Исходный массив: ");
         printIntArr(intArr, 0);
-        System.out.println();
-        int idxFromEnd = intArr.length;
-        for(int i = 0; i < intArr.length / 2; i++) {
-            idxFromEnd--;
+        len = intArr.length;
+        for(int i = 0; i < len / 2; i++) {
+            len--;
             int tmp = intArr[i];
-            intArr[i] = intArr[idxFromEnd];
-            intArr[idxFromEnd] = tmp;
+            intArr[i] = intArr[len];
+            intArr[len] = tmp;
         }
         System.out.println("Измененный массив:");
         printIntArr(intArr, 0);
 
-        System.out.println("\n\n==== Вывод произведения элементов массива");
+        System.out.println("==== Вывод произведения элементов массива");
         intArr = new int[10];
         System.out.println("Исходный массив:");
-        for(int i = 0; i < intArr.length; i++)
+        len = intArr.length;
+        for(int i = 0; i < len; i++)
             intArr[i] = i;
         printIntArr(intArr, 0);
-        System.out.println();
         long multiply = 1;
-        boolean isOperationPrinted = false;
         System.out.println("Результат: ");
-        for(int i = 1; i < intArr.length - 1; i++) {
+        for(int i = 1; i < len - 1; i++) {
             multiply *=  intArr[i];
             System.out.print(intArr[i] + (i == intArr.length - 2 ? " = " + multiply : " * "));
         }
@@ -34,71 +34,78 @@ public class ArrayTheme {
 
         System.out.println("\n==== Удаление элементов массива");
         float[] floatArr = new float[15];
-        int numbersZeroed = 0;
+        int numberZeroed = 0;
         System.out.print("Исходный массив: ");
-        for(int i = 0; i < floatArr.length; i++)
+        len = floatArr.length;
+        for(int i = 0; i < len; i++)
             floatArr[i] = (float) Math.random();
         printFloatArr(floatArr, 8);
         System.out.print("\nИзмененный массив: ");
-        float numBase = floatArr[floatArr.length / 2];
-        for(int i = 0; i < floatArr.length; i++) {
-            if(floatArr[i] > numBase) {
+        float middleNumber = floatArr[len / 2];
+        for(int i = 0; i < len; i++) {
+            if(floatArr[i] > middleNumber) {
                 floatArr[i] = 0;
-                numbersZeroed++;
+                numberZeroed++;
             }
         }
         printFloatArr(floatArr, 8);
-        System.out.println("\nКоличество обнуленных ячеек: " + numbersZeroed);
+        System.out.println("\nКоличество обнуленных ячеек: " + numberZeroed);
 
         System.out.println("\n==== Вывод элементов массива лесенкой в обратном порядке");
-        char letters[] = new char[26];
-        for (int i = 0; i < 26; i++) {
-            letters[i] = (char) ('A' + i);
+        char[] alphabet = new char[26];
+        len = alphabet.length;
+        for (int i = 0; i < len; i++) {
+            alphabet[i] = (char) ('A' + i);
         }
-        for(int i = letters.length - 1; i >=0; i--){
-            for(int j = letters.length - 1; j >= i; j--)
-                System.out.print(letters[j]);
+        for(int i = len - 1; i >= 0; i--) {
+            for(int j = len - 1; j >= i; j--)
+                System.out.print(alphabet[j]);
             System.out.println();
         }
 
         System.out.println("\n==== Генерация уникальных чисел");
-        int[] numbers = new int[30];
-        for(int i = 0; i < numbers.length; i++){
-            boolean exist;
+        int[] uniqueNumbers = new int[30];
+        len = uniqueNumbers.length;
+        for(int i = 0; i < len; i++) {
+            boolean unique;
+            int genNum;
             do {
-                numbers[i] = 60 + (int) ( Math.random() * 40 );
-                exist = false;
+                genNum = 60 + (int) (Math.random() * 40);
+                unique = false;
                 for(int j = 0; j < i; j++) {
-                    if(numbers[j] == numbers[i]) {
-                        exist = true;
+                    if(genNum == uniqueNumbers[i]) {
+                        unique = true;
                         break;
                     }
                 }
-            } while(exist);
+            } while(unique);
+            uniqueNumbers[i] = genNum;
+
         }
         System.out.print("Исходный массив: ");
-        printIntArr(numbers, 10);
-        quickSort(numbers, 0, numbers.length - 1);
-        System.out.print("\nОтсортированный массив: ");
-        printIntArr(numbers, 10);
+        printIntArr(uniqueNumbers, 10);
+        quickSort(uniqueNumbers, 0, uniqueNumbers.length - 1);
+        System.out.print("Отсортированный массив: ");
+        printIntArr(uniqueNumbers, 10);
 
-        System.out.println("\n\n==== Сдвиг элементов массива");
+        System.out.println("\n==== Сдвиг элементов массива");
         String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         System.out.print("Исходный массив: ");
         printStringArr(srcArr);
-        System.out.println();
         int numbersNoEmpty = 0;
         for(String element : srcArr) {
-            numbersNoEmpty += (element.isBlank() ? 0 : 1);
+            if(!element.isBlank()) numbersNoEmpty++;
         }
         String[] destArr = new String[numbersNoEmpty];
         int startCopyRange = -1;
         int nextDestStartRange = 0;
-        for(int i = 0; i < srcArr.length; i++) {
-            if(srcArr[i].isBlank() || i == srcArr.length - 1) {
-                if(startCopyRange >= 0 || i == srcArr.length - 1) {
+        len = srcArr.length;
+        for(int i = 0; i < len; i++) {
+            int noEmptyNum = srcArr[i].isBlank() ? 0 : 1;
+            if(noEmptyNum == 0 || i == len - 1) {
+                if(startCopyRange >= 0 || i == len - 1) {
                     System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange,
-                            i - startCopyRange + (srcArr[i].isBlank() ? 0 : 1));
+                            i - startCopyRange + noEmptyNum);
                     nextDestStartRange += i - startCopyRange;
                 }
                 startCopyRange = -1;
@@ -110,15 +117,18 @@ public class ArrayTheme {
         printStringArr(destArr);
     }
 
-    private static void printIntArr(int[] array, int elementOnRow){
-        for(int i = 0; i < array.length; i++) {
+    private static void printIntArr(int[] array, int elementOnRow) {
+        int len = array.length;
+        for(int i = 0; i < len; i++) {
             if(elementOnRow > 0 && i % elementOnRow == 0) System.out.println();
             System.out.printf("%5d", array[i]);
         }
+        System.out.println();
     }
 
     private static void printFloatArr(float[] array, int elementOnRow) {
-        for(int i = 0; i < array.length; i++) {
+        int len = array.length;
+        for(int i = 0; i < len; i++) {
             if(elementOnRow > 0 && i % elementOnRow == 0) System.out.println();
             System.out.printf("%8.3f", array[i]);
         }
@@ -150,12 +160,13 @@ public class ArrayTheme {
         return counter;
     }
 
-    private static void printStringArr(String[] array){
+    private static void printStringArr(String[] array) {
         System.out.print("{");
-        for(int i = 0; i < array.length; i++) {
-            System.out.print("\"" + array[i]  + "\"" + (i < array.length - 1 ? ", " : ""));
+        int len = array.length;
+        for(int i = 0; i < len; i++) {
+            System.out.print("\"" + array[i]  + "\"" + (i < len - 1 ? ", " : ""));
         }
         System.out.print("}");
+        System.out.println();
     }
-
 }
