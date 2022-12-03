@@ -90,7 +90,7 @@ public class ArrayTheme {
         printIntArr(uniqueNumbers, 10);
 
         System.out.println("\n==== Сдвиг элементов массива");
-        String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", "1"};
+        String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         System.out.print("Исходный массив: ");
         printStringArr(srcArr);
         int newLen = 0;
