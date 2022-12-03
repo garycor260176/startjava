@@ -90,7 +90,7 @@ public class ArrayTheme {
         printIntArr(uniqueNumbers, 10);
 
         System.out.println("\n==== Сдвиг элементов массива");
-        String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String srcArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", "1"};
         System.out.print("Исходный массив: ");
         printStringArr(srcArr);
         int newLen = 0;
@@ -102,17 +102,20 @@ public class ArrayTheme {
         int startCopyRange = -1;
         int nextDestStartRange = 0;
         len = srcArr.length;
+        int copyElements = 0;
         for(int i = 0; i < len; i++) {
-            int EmptyElement = srcArr[i].isBlank() ? 0 : 1;
-            if(EmptyElement == 0 || i == len - 1) {
-                int copyElements = i - startCopyRange + EmptyElement;
-                if(startCopyRange >= 0 || i == len - 1) {
+            if(srcArr[i].isBlank() || i == len - 1) {
+                if(!srcArr[i].isBlank()) copyElements++;
+                if(startCopyRange >= 0) {
                     System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange, copyElements);
                     nextDestStartRange += i - startCopyRange;
                 }
+
                 startCopyRange = -1;
+                copyElements = 0;
             } else {
                 if(startCopyRange < 0) startCopyRange = i;
+                copyElements++;
             }
         }
         System.out.print("Результат: ");
