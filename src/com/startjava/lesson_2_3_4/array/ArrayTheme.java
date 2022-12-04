@@ -102,20 +102,21 @@ public class ArrayTheme {
         int startCopyRange = -1;
         int nextDestStartRange = 0;
         len = srcArr.length;
-        int copyElements = 0;
+        int count = 0;
         for(int i = 0; i < len; i++) {
-            if(srcArr[i].isBlank() || i == len - 1) {
-                if(!srcArr[i].isBlank()) copyElements++;
+            boolean isBlank = srcArr[i].isBlank();
+            if(isBlank || i == len - 1) {
+                if(!isBlank) count++;
                 if(startCopyRange >= 0) {
-                    System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange, copyElements);
+                    System.arraycopy(srcArr, startCopyRange, destArr, nextDestStartRange, count);
                     nextDestStartRange += i - startCopyRange;
                 }
 
                 startCopyRange = -1;
-                copyElements = 0;
+                count = 0;
             } else {
                 if(startCopyRange < 0) startCopyRange = i;
-                copyElements++;
+                count++;
             }
         }
         System.out.print("Результат: ");
