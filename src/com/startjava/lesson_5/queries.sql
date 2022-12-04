@@ -1,0 +1,10 @@
+SELECT * FROM Jaegers;
+SELECT * FROM Jaegers WHERE status = 'Live';
+SELECT * FROM Jaegers WHERE mark IN ('1', '4');
+SELECT * FROM Jaegers WHERE mark NOT IN ('1', '4');
+SELECT * FROM Jaegers ORDER BY mark DESC;
+SELECT * FROM Jaegers WHERE launch = (SELECT MIN(launch) FROM Jaegers);
+SELECT * FROM Jaegers WHERE kaijuKill = (SELECT MAX(kaijuKill) FROM Jaegers);
+SELECT AVG(weight) FROM Jaegers;
+UPDATE Jaegers SET kaijukill = kaijukill + 1 WHERE status = 'Live';
+DELETE FROM Jaegers WHERE status = 'Destroyed';
