@@ -5,6 +5,33 @@ public class Calculator {
     private int num2;
     private char sign;
 
+    public double calculate(String expr) {
+        if(!setExpr(expr)) return 0;
+
+        switch(sign) {
+            case '+':
+                return Math.addExact(num1, num2);
+            case '-':
+                return Math.subtractExact(num1, num2);
+            case '*':
+                return Math.multiplyExact(num1, num2);
+            case '/':
+                if (num2 == 0) {
+                    System.out.println("Ошибка Деление на ноль.");
+                    return 0;
+                } else {
+                    return num1 / num2;
+                }
+            case '^':
+                return Math.pow(num1, num2);
+            case '%':
+                return (Math.IEEEremainder(num1, num2));
+            default:
+                System.out.println("Ошибка вычислений");
+                return 0;
+        }
+    }
+
     public boolean setExpr(String expr) {
         String[] tokens = expr.split(" ");
 
@@ -58,63 +85,5 @@ public class Calculator {
         }
         System.out.println("Не верно задан оператор.");
         return false;
-    }
-
-    public double calc() {
-        switch(sign) {
-            case '+':
-                return Math.addExact((long) num1, (long) num2);
-            case '-':
-                return Math.subtractExact((long) num1, (long) num2);
-            case '*':
-                return Math.multiplyExact((long) num1, (long) num2);
-            case '/':
-                return (double) num1 / (double) num2;
-            case '^':
-                return Math.pow(num1, num2);
-            case '%':
-                return num1 % num2;
-        }
-        return 0;
-    }
-
-    public static double calculate(String expr) {
-        String[] tokens = expr.split(" ");
-
-        if(tokens.length != 3) {
-            throw new IncorrectExpression("Не верное выражение" );
-        }
-
-        int num1;
-        try {
-            num1 = Integer.parseInt(tokens[0]);
-            if(num1 < 0)
-                throw new IncorrectExpression("Значение '" + tokens[0] + "' должно быть положительным.");
-        } catch (NumberFormatException err) {
-            throw new IncorrectExpression("Значение '" + tokens[0] + "' не является числом.", err);
-        }
-
-        int num2;
-        try {
-            num2 = Integer.parseInt(tokens[2]);
-            if(num2 < 0)
-                throw new IncorrectExpression("Значение '" + tokens[0] + "' должно быть положительным.");
-        } catch (NumberFormatException err) {
-            throw new IncorrectExpression("Значение '" + tokens[2] + "' не является числом.", err);
-        }
-
-        try {
-            return switch(tokens[1]) {
-                case "+" -> Math.addExact((long) num1, (long) num2);
-                case "-" -> Math.subtractExact((long) num1, (long) num2);
-                case "*" -> Math.multiplyExact((long) num1, (long) num2);
-                case "/" -> (double) num1 / (double) num2;
-                case "^" -> Math.pow(num1, num2);
-                case "%" -> num1 % num2;
-                default -> throw new IncorrectExpression("Операция '" + tokens[1] + "' не обрабатывается" );
-            };
-        } catch (ArithmeticException  err) {
-            throw new IncorrectExpression("Произошла недопустимая арифметическая операция", err);
-        }
     }
 }

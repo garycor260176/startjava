@@ -12,20 +12,11 @@ public class CalculatorTest {
         do {
             System.out.print("Введите математическое выражение в формате [число] [операция] [число]: ");
 
-            if(calculator.setExpr(scanner.nextLine( )))
-                System.out.println("Результат: " + calculator.calc());
-
-/*            try {
-                System.out.println("Результат: " + Calculator.calculate(scanner.nextLine( )));
-            } catch (IncorrectExpression err) {
-                System.out.println(err.getMessage());
-            }*/
-
+            System.out.println("Результат: " + calculator.calculate(scanner.nextLine( )));
             do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
                 answer = scanner.nextLine();
             } while (!"yes".equals(answer) && !"no".equals(answer));
-
         } while (!"no".equals(answer));
     }
 }

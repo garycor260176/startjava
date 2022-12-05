@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS FORCE Jaegers;
+DROP DATABASE IF EXISTS Jaegers;
 
 CREATE DATABASE Jaegers;
 
-\connect Jaegers;
+\c jaegers;
 
 CREATE TABLE Jaegers (
     id SERIAL PRIMARY KEY,
