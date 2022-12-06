@@ -20,12 +20,19 @@ public class GuessNumberTest {
         GuessNumber guessNumber = new GuessNumber(maxNumbersAttempt, scanner, player1, player2);
 
         String answer = "";
-        do{
+        while(true){
             guessNumber.startGame();
-            do {
-                System.out.print("Хотите продолжить игру? [yes/no]: ");
-                answer = scanner.next();
-            } while(!"yes".equals(answer) && !"no".equals(answer));
-        } while(answer.equals("yes"));
+            if(!Continue(scanner)) break;
+        }
+    }
+
+    private static boolean Continue(Scanner scanner) {
+        String answer;
+        do {
+            System.out.print("Хотите продолжить игру? [yes/no]: ");
+            answer = scanner.next();
+        } while(!"yes".equals(answer) && !"no".equals(answer));
+        if("yes".equals(answer)) return true;
+        return false;
     }
 }
