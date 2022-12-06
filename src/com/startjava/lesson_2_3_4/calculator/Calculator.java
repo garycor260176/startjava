@@ -17,7 +17,7 @@ public class Calculator {
                 return Math.multiplyExact(num1, num2);
             case '/':
                 if (num2 == 0) {
-                    System.out.println("Ошибка Деление на ноль.");
+                    System.out.println("Ошибка: деление на ноль.");
                     return 0;
                 } else {
                     return num1 / num2;
