@@ -18,16 +18,14 @@ public class GuessNumberTest {
         Player player2 = new Player(scanner.nextLine());
 
         GuessNumber guessNumber = new GuessNumber(maxNumbersAttempt, scanner, player1, player2);
-        //GuessNumberV02 guessNumber = new GuessNumberV02(3, maxNumbersAttempt, scanner, player1, player2, player3);
 
         String answer = "";
-        while(!"no".equals(answer)) {
+        do{
             guessNumber.startGame();
-
             do {
                 System.out.print("Хотите продолжить игру? [yes/no]: ");
                 answer = scanner.next();
-            } while(!"yes".equals(answer) && !"no".equals(answer));                
-        }
-    }    
+            } while(!"yes".equals(answer) && !"no".equals(answer));
+        } while(answer.equals("yes"));
+    }
 }
