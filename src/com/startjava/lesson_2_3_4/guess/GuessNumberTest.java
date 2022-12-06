@@ -19,7 +19,6 @@ public class GuessNumberTest {
 
         GuessNumber guessNumber = new GuessNumber(maxNumbersAttempt, scanner, player1, player2);
 
-        String answer = "";
         while(true){
             guessNumber.startGame();
             if(!Continue(scanner)) break;
