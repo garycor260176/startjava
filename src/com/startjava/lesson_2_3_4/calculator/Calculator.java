@@ -32,7 +32,7 @@ public class Calculator {
         }
     }
 
-    public void parseExpr(String expr) {
+    private void parseExpr(String expr) {
         String[] partsExpr = expr.split(" ");
         num1 = Integer.parseInt(partsExpr[0]);
         sign = partsExpr[1].charAt(0);
