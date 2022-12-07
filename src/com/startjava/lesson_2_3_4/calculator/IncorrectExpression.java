@@ -5,7 +5,7 @@ public class IncorrectExpression extends RuntimeException {
     public IncorrectExpression(String errorMessage, RuntimeException err) {
         super(errorMessage, err);
     }
-    
+
     public IncorrectExpression(String errorMessage) {
         super(errorMessage);
     }

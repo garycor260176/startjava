@@ -1,10 +1,6 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private int num1;
-    private int num2;
-    private char sign;
-
     public static double calculate(String expr) {
         String[] partsExpr = expr.split(" ");
 
