@@ -1,6 +1,7 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
+
     public static double calculate(String expr) {
         String[] partsExpr = expr.split(" ");
 
