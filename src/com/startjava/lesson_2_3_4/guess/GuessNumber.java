@@ -81,10 +81,10 @@ public class GuessNumber {
 
     private void printPlayerAttempts(Player... players) {
         for(Player player: players) {
-            int[] attempts = player.getNumbers();
+            int[] numbers = player.getNumbers();
             System.out.print(player.getName() + ": ");
-            for(int num : attempts)
-                System.out.print(num + " ");
+            for(int number : numbers)
+                System.out.print(number + " ");
             System.out.println();
         }
     }
