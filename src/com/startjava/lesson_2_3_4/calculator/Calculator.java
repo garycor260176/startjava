@@ -23,8 +23,8 @@ public class Calculator {
                 case '%' -> num1 % num2;
                 default -> throw new IncorrectExpression("Операция '" + sign + "' не обрабатывается" );
             };
-        } catch (ArithmeticException  err) {
-            throw new IncorrectExpression("Недопустимая арифметическая операция", err);
+        } catch (ArithmeticException e) {
+            throw new IncorrectExpression("Недопустимая арифметическая операция", e);
         }
     }
 
@@ -34,8 +34,8 @@ public class Calculator {
             value = Integer.parseInt(num);
             if(value < 0)
                 throw new IncorrectExpression("Значение '" + value + "' должно быть положительным.");
-        } catch (NumberFormatException err) {
-            throw new IncorrectExpression("Значение '" + num + "' не является числом.", err);
+        } catch (NumberFormatException e) {
+            throw new IncorrectExpression("Значение '" + num + "' не является числом.", e);
         }
         return value;
     }
