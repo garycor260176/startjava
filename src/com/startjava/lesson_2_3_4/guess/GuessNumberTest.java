@@ -19,19 +19,18 @@ public class GuessNumberTest {
 
         GuessNumber guessNumber = new GuessNumber(maxNumbersAttempt, scanner, player1, player2);
 
-        while(true){
+        do {
             guessNumber.startGame();
-            if(!Continue(scanner)) break;
-        }
+        } while(isNext(scanner));
     }
 
-    private static boolean Continue(Scanner scanner) {
+    private static boolean isNext(Scanner scanner) {
         String answer;
         do {
             System.out.print("Хотите продолжить игру? [yes/no]: ");
             answer = scanner.next();
         } while(!"yes".equals(answer) && !"no".equals(answer));
-        if("yes".equals(answer)) return true;
-        return false;
+
+        return "yes".equals(answer);
     }
 }
