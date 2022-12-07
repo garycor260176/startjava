@@ -3,10 +3,11 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumberTest {
+    static final int maxNumbersAttempt = 10;
+
     public static void main(String[] args) {
         System.out.println("********* Игра 'Угадай число' ********* ");
 
-        int maxNumbersAttempt = 10;
         System.out.println("У каждого игрока по " + maxNumbersAttempt + " попыток");
 
         Scanner scanner = new Scanner(System.in, "Cp866");
