@@ -4,48 +4,44 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int numbers[];
-    private int currentAttempt;
+    private int[] numbers;
+    private int Attempt;
     private int maxNumbersAttempt;
-
     private int numbersWin;
     
     public Player(String name) {
-        //this.numbers = new int[maxNumbersAttempt];
         this.name = name;
-        //this.maxNumbersAttempt = maxNumbersAttempt;
-        clear();
+        numbers = new int[10];
+        maxNumbersAttempt = numbers.length;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCurrentAttempt( ) {
-        return currentAttempt;
+    public int getAttempt() {
+        return Attempt;
     }
 
     public void clear() {
-        if(currentAttempt > 0)
-            Arrays.fill(numbers, 0, currentAttempt - 1, 0);
-
-        currentAttempt = 0;
+        if(Attempt > 0)
+            Arrays.fill(numbers, 0, Attempt, 0);
+        Attempt = 0;
     }
 
-    public int[] getAttempts() {
-        return Arrays.copyOf(numbers, currentAttempt);
+    public int[] getNumbers() {
+        return Arrays.copyOf(numbers, Attempt);
     }
 
-    public boolean addNumber(int num) {
-        if(currentAttempt >= maxNumbersAttempt) return false;
+    public boolean addNumber(int number) {
+        if(Attempt >= maxNumbersAttempt) return false;
 
-        if(num < 1 || num > 100) {
-            System.out.print("Число " + num + " не входит в интервал (0, 100]. Попробуйте еще раз: ");
+        if(number < 1 || number > 100) {
+            System.out.print("Число " + number + " не входит в интервал (0, 100]. Попробуйте еще раз: ");
             return false;
         }
 
-        numbers[currentAttempt] = num;
-        currentAttempt++;
+        numbers[Attempt++] = number;
         return true;
     }
 
@@ -55,10 +51,5 @@ public class Player {
 
     public void setNumbersWin(int numbersWin) {
         this.numbersWin = numbersWin;
-    }
-
-    public void setMaxNumbersAttempt(int maxNumbersAttempt) {
-        this.maxNumbersAttempt = maxNumbersAttempt;
-        numbers = new int[this.maxNumbersAttempt];
     }
 }
