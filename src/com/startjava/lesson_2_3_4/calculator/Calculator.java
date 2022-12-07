@@ -19,7 +19,7 @@ public class Calculator {
                 default -> throw new IncorrectExpression("Операция '" + sign + "' не обрабатывается" );
             };
         } catch (ArithmeticException  err) {
-            throw new IncorrectExpression("Произошла недопустимая арифметическая операция", err);
+            throw new IncorrectExpression("Недопустимая арифметическая операция", err);
         }
     }
 
