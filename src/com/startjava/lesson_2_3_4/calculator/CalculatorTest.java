@@ -13,9 +13,9 @@ public class CalculatorTest {
             System.out.print("Введите математическое выражение в формате [число] [операция] [число]: ");
 
             try {
-                System.out.println("Результат: " + Calculator.calculate(scanner.nextLine( )));
-            } catch (IncorrectExpression err) {
-                System.out.println(err.getMessage());
+                System.out.println("Результат: " + Calculator.calculate(scanner.nextLine()));
+            } catch (IncorrectExpression e) {
+                System.out.println(e.getMessage());
             }
 
             do {
