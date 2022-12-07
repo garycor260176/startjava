@@ -6,7 +6,7 @@ public class GuessNumber {
     private final int maxNumbersAttempt = 10;
     private Player player1;
     private Player player2;
-    private int hiddenNum;
+    private int hiddenNumber;
     private Scanner scanner;
 
     public GuessNumber(Scanner scanner, Player player1, Player player2) {
@@ -31,7 +31,7 @@ public class GuessNumber {
     }
 
     private void generateNumber() {
-        hiddenNum = 1 + (int) (Math.random() * 100);
+        hiddenNumber = 1 + (int) (Math.random() * 100);
     }
 
     private boolean isGuessed() {
@@ -50,18 +50,18 @@ public class GuessNumber {
             return 0;
         System.out.print(player.getName( ) + ", введите число: ");
 
-        int num;
+        int number;
         do {
-            num = inputNum();
-        } while(!player.addNumber(num));
+            number = inputNumber();
+        } while(!player.addNumber(number));
 
-        if(num == hiddenNum) {
-            System.out.println("Игрок " + player.getName( ) + " угадал число " + hiddenNum +
+        if(number == hiddenNumber) {
+            System.out.println("Игрок " + player.getName( ) + " угадал число " + hiddenNumber +
                     " с " + player.getAttempt() + " попытки");
             return 1;
         }
 
-        System.out.println("Число " + num + (num > hiddenNum ? " больше" : " меньше") +
+        System.out.println("Число " + number + (number > hiddenNumber ? " больше" : " меньше") +
             " того, что загадал компьютер.");
 
         if(player.getAttempt() >= maxNumbersAttempt)
@@ -69,14 +69,14 @@ public class GuessNumber {
         return 2;
     }
 
-    private int inputNum() {
-        int num;
+    private int inputNumber() {
+        int number;
         while(!scanner.hasNextInt()) {
             System.out.print("Введено не число. Попробуйте снова: ");
             scanner.next();
         }
-        num = scanner.nextInt();
-        return num;
+        number = scanner.nextInt();
+        return number;
     }
 
     private void printPlayerAttempts(Player... players) {
