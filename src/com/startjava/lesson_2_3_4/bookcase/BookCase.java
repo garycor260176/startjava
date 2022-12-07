@@ -39,7 +39,7 @@ public class BookCase {
         return books[idx];
     }
 
-    public int getNumbersBook() {
+    public int getNumsBook() {
         return numBooks;
     }
 

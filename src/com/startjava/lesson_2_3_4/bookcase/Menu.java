@@ -80,7 +80,7 @@ public class Menu {
     }
 
     private void deleteBookByIdx() {
-        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNumbersBook() + "): ", "Введено не число. Попробуйте снова: ");
+        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNumsBook() + "): ", "Введено не число. Попробуйте снова: ");
         try {
             bookcase.deleteBook(idx - 1);
             System.out.print("Книга удалена. ");

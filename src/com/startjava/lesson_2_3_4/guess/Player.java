@@ -44,12 +44,4 @@ public class Player {
         numbers[Attempt++] = number;
         return true;
     }
-
-     public int getNumbersWin() {
-        return numbersWin;
-    }
-
-    public void setNumbersWin(int numbersWin) {
-        this.numbersWin = numbersWin;
-    }
 }
