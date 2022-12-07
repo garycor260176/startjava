@@ -31,8 +31,8 @@ public class Calculator {
         }
 
         num1 = setNum(partsExpr[0]);
-        num2 = setNum(partsExpr[2]);
         sign = partsExpr[1].charAt(0);
+        num2 = setNum(partsExpr[2]);
     }
 
     private int setNum(String num) {
