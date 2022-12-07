@@ -5,8 +5,16 @@ public class Calculator {
     private int num2;
     private char sign;
 
-    public double calculate(String expr) {
-        parseExpr(expr);
+    public static double calculate(String expr) {
+        String[] partsExpr = expr.split(" ");
+
+        if(partsExpr.length != 3) {
+            throw new IncorrectExpression("Не верное выражение" );
+        }
+
+        int num1 = setNum(partsExpr[0]);
+        char sign = partsExpr[1].charAt(0);
+        int num2 = setNum(partsExpr[2]);
 
         try {
             return switch(sign) {
@@ -23,19 +31,7 @@ public class Calculator {
         }
     }
 
-    private void parseExpr(String expr) {
-        String[] partsExpr = expr.split(" ");
-
-        if(partsExpr.length != 3) {
-            throw new IncorrectExpression("Не верное выражение" );
-        }
-
-        num1 = setNum(partsExpr[0]);
-        sign = partsExpr[1].charAt(0);
-        num2 = setNum(partsExpr[2]);
-    }
-
-    private int setNum(String num) {
+    private static int setNum(String num) {
         int value = 0;
         try {
             value = Integer.parseInt(num);

@@ -13,7 +13,7 @@ public class CalculatorTest {
             System.out.print("Введите математическое выражение в формате [число] [операция] [число]: ");
 
             try {
-                System.out.println("Результат: " + calculator.calculate(scanner.nextLine( )));
+                System.out.println("Результат: " + Calculator.calculate(scanner.nextLine( )));
             } catch (IncorrectExpression err) {
                 System.out.println(err.getMessage());
             }
