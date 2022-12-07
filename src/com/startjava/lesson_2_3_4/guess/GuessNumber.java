@@ -27,7 +27,7 @@ public class GuessNumber {
                 System.out.println("--- Попытка №" + ++step);
         } while(step <= maxNumbersAttempt && !isGuessed());
 
-        printPlayerAttempts(player1, player2);
+        printPlayerNUmbers(player1, player2);
     }
 
     private void generateNumber() {
@@ -79,7 +79,7 @@ public class GuessNumber {
         return number;
     }
 
-    private void printPlayerAttempts(Player... players) {
+    private void printPlayerNUmbers(Player... players) {
         for(Player player: players) {
             int[] numbers = player.getNumbers();
             System.out.print(player.getName() + ": ");
