@@ -10,7 +10,7 @@ public class Book {
         this.author = author;
         this.title = title;
         this.yearPublication = yearPublication;
-        lenghtInfo = this.toString( ).length();
+        lenghtInfo = toString( ).length();
     }
 
     public String getTitle() {
