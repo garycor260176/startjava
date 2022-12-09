@@ -79,14 +79,14 @@ public class BookCase {
             throw new IncorrectExpression("Шкаф уже полностью заполнен.");
         }
         books[numBooks++] = book;
-        if(maxLengthInfo < book.lenghtInfo) maxLengthInfo = book.lenghtInfo;
+        if(maxLengthInfo < book.getLenghtInfo()) maxLengthInfo = book.getLenghtInfo();
         return numBooks;
     }
 
     private void recalcCaseWidth() {
         maxLengthInfo = 0;
         for(int i = 0; i < numBooks; i++ ) {
-            if(maxLengthInfo < books[i].lenghtInfo) maxLengthInfo = books[i].lenghtInfo;
+            if(maxLengthInfo < books[i].getLenghtInfo()) maxLengthInfo = books[i].getLenghtInfo();
         }
     }
 }
