@@ -13,20 +13,8 @@ public class Book {
         lenghtInfo = this.toString( ).length();
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public int getYearPublication() {
-        return yearPublication;
-    }
-
-    public int getLengthInfo() {
-        return lenghtInfo;
     }
 
     public String toString() {

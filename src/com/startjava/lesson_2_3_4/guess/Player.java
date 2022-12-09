@@ -36,11 +36,6 @@ public class Player {
     public boolean addNumber(int number) {
         if(Attempt >= maxNumbersAttempt) return false;
 
-        if(number < 1 || number > 100) {
-            System.out.print("Число " + number + " не входит в интервал (0, 100]. Попробуйте еще раз: ");
-            return false;
-        }
-
         numbers[Attempt++] = number;
         return true;
     }

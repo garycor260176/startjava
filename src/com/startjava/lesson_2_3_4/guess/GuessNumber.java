@@ -3,13 +3,15 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private final int maxNumbersAttempt = 10;
+    static final int MAX_ATTEMPTS = 10;
     private Player player1;
     private Player player2;
     private int hiddenNumber;
     private Scanner scanner;
 
     public GuessNumber(Scanner scanner, Player player1, Player player2) {
+        System.out.println("У каждого игрока по 10 попыток");
+
         this.player1 = player1;
         this.player2 = player2;
         this.scanner = scanner;
@@ -23,11 +25,10 @@ public class GuessNumber {
 
         int step = 0;
         do {
-            if(step < maxNumbersAttempt)
-                System.out.println("--- Попытка №" + ++step);
-        } while(step <= maxNumbersAttempt && !isGuessed());
+            System.out.println("--- Попытка №" + ++step);
+        } while(step <= MAX_ATTEMPTS && !isGuessed());
 
-        printPlayerNUmbers(player1, player2);
+        printPlayerNumbers(player1, player2);
     }
 
     private void generateNumber() {
@@ -35,51 +36,40 @@ public class GuessNumber {
     }
 
     private boolean isGuessed() {
-        int resultStepPlayer1 = isPlayerGuessed(player1);
-        if(resultStepPlayer1 == 1) return true;
-        int resultStepPlayer2 = isPlayerGuessed(player2);
-        if(resultStepPlayer2 == 1) return true;
-
-        if(resultStepPlayer1 == 0 && resultStepPlayer2 == 0) return true;
-
+        if(makeMove(player1) || makeMove(player2)) return true;
         return false;
     }
 
-    private int isPlayerGuessed(Player player) {
-        if(player.getAttempt() >= maxNumbersAttempt)
-            return 0;
+    private boolean makeMove(Player player) {
         System.out.print(player.getName() + ", введите число: ");
 
-        int number;
-        do {
-            number = inputNumber();
-        } while(!player.addNumber(number));
+        int number = inputNumber();
+        player.addNumber(number);
 
         if(number == hiddenNumber) {
             System.out.println("Игрок " + player.getName() + " угадал число " + hiddenNumber +
                     " с " + player.getAttempt() + " попытки");
-            return 1;
+            return true;
         }
 
         System.out.println("Число " + number + (number > hiddenNumber ? " больше" : " меньше") +
             " того, что загадал компьютер.");
 
-        if(player.getAttempt() >= maxNumbersAttempt)
+        if(player.getAttempt() >= MAX_ATTEMPTS)
             System.out.println("У " + player.getName() + " закончились попытки");
-        return 2;
+
+        return false;
     }
 
     private int inputNumber() {
-        int number;
-        while(!scanner.hasNextInt()) {
+        while (!scanner.hasNextInt()) {
             System.out.print("Введено не число. Попробуйте снова: ");
             scanner.next();
         }
-        number = scanner.nextInt();
-        return number;
+        return scanner.nextInt();
     }
 
-    private void printPlayerNUmbers(Player... players) {
+    private void printPlayerNumbers(Player... players) {
         for(Player player: players) {
             int[] numbers = player.getNumbers();
             System.out.print(player.getName() + ": ");

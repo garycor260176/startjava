@@ -31,20 +31,12 @@ public class BookCase {
         return addBook(book);
     }
 
-    public Book[] getBooks() {
-        return books;
-    }
-
     public Book getBook(int idx) {
         return books[idx];
     }
 
     public int getNumsBook() {
         return numBooks;
-    }
-
-    public int getEmptyPlace() {
-        return MAX_PLACES - numBooks;
     }
 
     public int[] findBook(String title) {
