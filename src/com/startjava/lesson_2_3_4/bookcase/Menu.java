@@ -80,7 +80,7 @@ public class Menu {
     }
 
     private void deleteBookByIdx() {
-        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNums() + "): ", "Введено не число. Попробуйте снова: ");
+        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNumBooks() + "): ", "Введено не число. Попробуйте снова: ");
         try {
             bookcase.delete(idx - 1);
             System.out.print("Книга удалена. ");
@@ -133,7 +133,7 @@ public class Menu {
     }
 
     private void printCase() {
-        int numBooks = bookcase.getNums();
+        int numBooks = bookcase.getNumBooks();
         int maxLengthInfo = bookcase.getMaxLengthInfo();
         if(numBooks == 0) {
             System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");

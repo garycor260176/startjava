@@ -30,7 +30,12 @@ public class Player {
         return Arrays.copyOf(numbers, attempt);
     }
 
-    public void addNumber(int number) {
+    public boolean addNumber(int number) {
+        if(number < 1 || number > 100) {
+            System.out.print("Число должно входить в диапазон (1, 100]. Попробуйте снова: ");
+            return false;
+        }
         numbers[attempt++] = number;
+        return true;
     }
 }

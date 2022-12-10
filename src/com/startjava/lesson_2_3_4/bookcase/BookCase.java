@@ -7,7 +7,7 @@ public class BookCase {
     private static final int NUM_SHELFS = 10;
     private int numBooks;
     private Book[] books;
-    private int maxLengthInfo;
+    private int shelfLength;
 
     public BookCase() {
         books = new Book[NUM_SHELFS];
@@ -18,7 +18,8 @@ public class BookCase {
             throw new IncorrectExpression("Шкаф уже полностью заполнен.");
         }
         books[numBooks++] = book;
-        if(maxLengthInfo < book.getLenghtInfo()) maxLengthInfo = book.getLenghtInfo();
+        if(shelfLength < book.getLenghtInfo())
+            shelfLength = book.getLenghtInfo();
         return numBooks;
     }
 
@@ -26,7 +27,7 @@ public class BookCase {
         return books[idx];
     }
 
-    public int getNums() {
+    public int getNumBooks() {
         return numBooks;
     }
 
@@ -53,10 +54,11 @@ public class BookCase {
 
     public void delete(int idx) {
         if(idx < 0 || idx >= numBooks) throw new IncorrectExpression("Книга не найдена.");
+        int lenghtInfo = books[idx].getLenghtInfo();
         if(idx == numBooks - 1) books[idx] = null;
         System.arraycopy(books, idx + 1, books, idx, numBooks - idx);
         numBooks--;
-        recalcCaseWidth();
+        if(lenghtInfo == shelfLength) calcShelfLength();
     }
 
     public void clear() {
@@ -66,13 +68,14 @@ public class BookCase {
     }
 
     public int getMaxLengthInfo() {
-        return maxLengthInfo;
+        return shelfLength;
     }
 
-    private void recalcCaseWidth() {
-        maxLengthInfo = 0;
+    private void calcShelfLength() {
+        shelfLength = 0;
         for(int i = 0; i < numBooks; i++ ) {
-            if(maxLengthInfo < books[i].getLenghtInfo()) maxLengthInfo = books[i].getLenghtInfo();
+            if(shelfLength < books[i].getLenghtInfo())
+                shelfLength = books[i].getLenghtInfo();
         }
     }
 }
