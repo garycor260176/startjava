@@ -46,12 +46,12 @@ public class GuessNumber {
 
         if(number == hiddenNumber) {
             System.out.println("Игрок " + player.getName() + " угадал число " + hiddenNumber +
-                " с " + player.getAttempt() + " попытки");
+                    " с " + player.getAttempt() + " попытки");
             return true;
         }
 
         System.out.println("Число " + number + (number > hiddenNumber ? " больше" : " меньше") +
-            " того, что загадал компьютер.");
+                " того, что загадал компьютер.");
 
         if(player.getAttempt() >= MAX_ATTEMPTS)
             System.out.println("У " + player.getName() + " закончились попытки");

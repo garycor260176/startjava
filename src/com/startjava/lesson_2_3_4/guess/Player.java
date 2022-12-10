@@ -30,8 +30,7 @@ public class Player {
         return Arrays.copyOf(numbers, attempt);
     }
 
-    public boolean addNumber(int number) {
+    public void addNumber(int number) {
         numbers[attempt++] = number;
-        return true;
     }
 }
