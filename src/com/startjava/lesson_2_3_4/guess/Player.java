@@ -5,14 +5,11 @@ import java.util.Arrays;
 public class Player {
     private String name;
     private int[] numbers;
-    private int Attempt;
-    private int maxNumbersAttempt;
-    private int numbersWin;
-    
+    private int attempt;
+
     public Player(String name) {
         this.name = name;
-        numbers = new int[10];
-        maxNumbersAttempt = numbers.length;
+        numbers = new int[GuessNumber.MAX_ATTEMPTS];
     }
 
     public String getName() {
@@ -20,23 +17,21 @@ public class Player {
     }
 
     public int getAttempt() {
-        return Attempt;
+        return attempt;
     }
 
     public void clear() {
-        if(Attempt > 0)
-            Arrays.fill(numbers, 0, Attempt, 0);
-        Attempt = 0;
+        if(attempt > 0)
+            Arrays.fill(numbers, 0, attempt, 0);
+        attempt = 0;
     }
 
     public int[] getNumbers() {
-        return Arrays.copyOf(numbers, Attempt);
+        return Arrays.copyOf(numbers, attempt);
     }
 
     public boolean addNumber(int number) {
-        if(Attempt >= maxNumbersAttempt) return false;
-
-        numbers[Attempt++] = number;
+        numbers[attempt++] = number;
         return true;
     }
 }

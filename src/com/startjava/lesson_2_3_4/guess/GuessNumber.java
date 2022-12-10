@@ -11,7 +11,6 @@ public class GuessNumber {
 
     public GuessNumber(Scanner scanner, Player player1, Player player2) {
         System.out.println("У каждого игрока по 10 попыток");
-
         this.player1 = player1;
         this.player2 = player2;
         this.scanner = scanner;
@@ -36,8 +35,7 @@ public class GuessNumber {
     }
 
     private boolean isGuessed() {
-        if(makeMove(player1) || makeMove(player2)) return true;
-        return false;
+        return makeMove(player1) || makeMove(player2);
     }
 
     private boolean makeMove(Player player) {
@@ -48,7 +46,7 @@ public class GuessNumber {
 
         if(number == hiddenNumber) {
             System.out.println("Игрок " + player.getName() + " угадал число " + hiddenNumber +
-                    " с " + player.getAttempt() + " попытки");
+                " с " + player.getAttempt() + " попытки");
             return true;
         }
 
@@ -70,7 +68,7 @@ public class GuessNumber {
     }
 
     private void printPlayerNumbers(Player... players) {
-        for(Player player: players) {
+        for(Player player : players) {
             int[] numbers = player.getNumbers();
             System.out.print(player.getName() + ": ");
             for(int number : numbers)

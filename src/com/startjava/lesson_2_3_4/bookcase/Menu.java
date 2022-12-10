@@ -70,8 +70,8 @@ public class Menu {
 
     private void inputBook() {
         try {
-            bookcase.addBook(inputString("Автор: "), inputString("Название: "),
-                    inputNum("Год публикации: ", "Не верно задан год. Попробуйте снова: "));
+            bookcase.add(new Book(inputString("Автор: "), inputString("Название: "),
+                inputNum("Год публикации: ", "Не верно задан год. Попробуйте снова: ")));
             System.out.print("Книга добавлена. ");
         } catch (IncorrectExpression err) {
             System.out.print(err.getMessage());
@@ -80,9 +80,9 @@ public class Menu {
     }
 
     private void deleteBookByIdx() {
-        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNumsBook() + "): ", "Введено не число. Попробуйте снова: ");
+        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNums() + "): ", "Введено не число. Попробуйте снова: ");
         try {
-            bookcase.deleteBook(idx - 1);
+            bookcase.delete(idx - 1);
             System.out.print("Книга удалена. ");
         } catch (IncorrectExpression err) {
             System.out.print(err.getMessage());
@@ -92,7 +92,7 @@ public class Menu {
 
     private void deleteBookByTitle() {
         try {
-            System.out.print("Удалено " + bookcase.deleteBook(inputString("Введите название книги: ")) +
+            System.out.print("Удалено " + bookcase.delete(inputString("Введите название книги: ")) +
                 " книг. ");
         } catch (IncorrectExpression err) {
             System.out.print(err.getMessage());
@@ -113,10 +113,10 @@ public class Menu {
     }
 
     private void findBook() {
-        int[] indexes = bookcase.findBook(inputString("Введите название книги: "));
+        int[] indexes = bookcase.find(inputString("Введите название книги: "));
         System.out.println( indexes.length == 0 ? "Книги не найдены: " : "Найдено " + indexes.length + " книг:");
         for(int index : indexes) {
-            System.out.println(bookcase.getBook(index).toString());
+            System.out.println(bookcase.get(index).toString());
         }
         inputEnter();
     }
@@ -128,7 +128,22 @@ public class Menu {
     }
 
     private void printCaseAndMenu() {
-        bookcase.print();
+        printCase();
         print();
+    }
+
+    private void printCase() {
+        int numBooks = bookcase.getNums();
+        int maxLengthInfo = bookcase.getMaxLengthInfo();
+        if(numBooks == 0) {
+            System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
+            return;
+        }
+        for(int i = 0; i <= numBooks; i++) {
+            if(i > 0)
+                System.out.print("|" + "-".repeat(maxLengthInfo) + "|\n");
+            System.out.printf("|%-" + maxLengthInfo + "s|\n", (i < numBooks) ? bookcase.get(i).toString() : "");
+            if(i == numBooks) break;
+        }
     }
 }

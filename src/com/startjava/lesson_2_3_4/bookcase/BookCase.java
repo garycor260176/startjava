@@ -4,42 +4,33 @@ import com.startjava.lesson_2_3_4.calculator.IncorrectExpression;
 import java.util.Arrays;
 
 public class BookCase {
-    static final int MAX_PLACES = 10;
+    private static final int NUM_SHELFS = 10;
     private int numBooks;
     private Book[] books;
     private int maxLengthInfo;
 
     public BookCase() {
-        books = new Book[MAX_PLACES];
+        books = new Book[NUM_SHELFS];
     }
 
-    public void print() {
-        if(numBooks == 0) {
-            System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
-            return;
+    public int add(Book book) {
+        if(numBooks == NUM_SHELFS) {
+            throw new IncorrectExpression("Шкаф уже полностью заполнен.");
         }
-        for(int i = 0; i < books.length; i++) {
-            if(i > 0)
-                System.out.print("|" + "-".repeat(maxLengthInfo) + "|\n");
-            System.out.printf("|%-" + maxLengthInfo + "s|\n", (i < numBooks) ? books[i].toString() : "");
-            if(i == numBooks) break;
-        }
-    }
-
-    public int addBook(String author, String title, int yearPublication) {
-        Book book = new Book(author, title, yearPublication);
-        return addBook(book);
-    }
-
-    public Book getBook(int idx) {
-        return books[idx];
-    }
-
-    public int getNumsBook() {
+        books[numBooks++] = book;
+        if(maxLengthInfo < book.getLenghtInfo()) maxLengthInfo = book.getLenghtInfo();
         return numBooks;
     }
 
-    public int[] findBook(String title) {
+    public Book get(int idx) {
+        return books[idx];
+    }
+
+    public int getNums() {
+        return numBooks;
+    }
+
+    public int[] find(String title) {
         int numFounded = 0;
         int idxFounded[] = new int[books.length];
         for(int i = 0; i < numBooks; i++) {
@@ -51,16 +42,16 @@ public class BookCase {
         return Arrays.copyOf(idxFounded, numFounded);
     }
 
-    public int deleteBook(String title) {
-        int foundedBooks[] = findBook(title);
+    public int delete(String title) {
+        int foundedBooks[] = find(title);
         if(foundedBooks.length == 0)
             throw new IncorrectExpression("Книга '" + title + "' не найдена.");
         for(int i = foundedBooks.length - 1; i >= 0; i--)
-            deleteBook(foundedBooks[i]);
+            delete(foundedBooks[i]);
         return foundedBooks.length;
     }
 
-    public void deleteBook(int idx) {
+    public void delete(int idx) {
         if(idx < 0 || idx >= numBooks) throw new IncorrectExpression("Книга не найдена.");
         if(idx == numBooks - 1) books[idx] = null;
         System.arraycopy(books, idx + 1, books, idx, numBooks - idx);
@@ -70,17 +61,12 @@ public class BookCase {
 
     public void clear() {
         if(numBooks == 0) return;
-        Arrays.fill(books, 0, numBooks - 1, null);
+        Arrays.fill(books, 0, numBooks, null);
         numBooks = 0;
     }
 
-    private int addBook(Book book) {
-        if(numBooks == MAX_PLACES) {
-            throw new IncorrectExpression("Шкаф уже полностью заполнен.");
-        }
-        books[numBooks++] = book;
-        if(maxLengthInfo < book.getLenghtInfo()) maxLengthInfo = book.getLenghtInfo();
-        return numBooks;
+    public int getMaxLengthInfo() {
+        return maxLengthInfo;
     }
 
     private void recalcCaseWidth() {
