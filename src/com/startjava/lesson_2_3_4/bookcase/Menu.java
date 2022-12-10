@@ -143,7 +143,6 @@ public class Menu {
             if(i > 0)
                 System.out.print("|" + "-".repeat(maxLengthInfo) + "|\n");
             System.out.printf("|%-" + maxLengthInfo + "s|\n", (i < numBooks) ? bookcase.get(i).toString() : "");
-            if(i == numBooks) break;
         }
     }
 }
