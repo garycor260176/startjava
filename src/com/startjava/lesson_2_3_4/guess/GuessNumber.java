@@ -63,6 +63,10 @@ public class GuessNumber {
         printPlayerNumbers();
     }
 
+    private void generateNumber() {
+        hiddenNumber = 1 + (int) (Math.random() * 100);
+    }
+
     private void castLots() {
         int i = players.length - 1;
         while(i > 1 ) {
@@ -71,10 +75,6 @@ public class GuessNumber {
             players[rand] = players[i];
             players[i--] = tmp;
         }
-    }
-
-    private void generateNumber() {
-        hiddenNumber = 1 + (int) (Math.random() * 100);
     }
 
     private boolean isGuessed() {
