@@ -13,11 +13,26 @@ public class Menu {
     }
 
     public void start() {
-        printCaseAndMenu();
-        selectMenu();
+        printCase();
+        printMenu();
+        selectAction();
     }
 
-    private void print() {
+    private void printCase() {
+        int numBooks = bookcase.getNumBooks();
+        int maxLengthInfo = bookcase.getMaxLengthInfo();
+        if(numBooks == 0) {
+            System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
+            return;
+        }
+        for(int i = 0; i <= numBooks; i++) {
+            if(i > 0)
+                System.out.print("|" + "-".repeat(maxLengthInfo) + "|\n");
+            System.out.printf("|%-" + maxLengthInfo + "s|\n", (i < numBooks) ? bookcase.get(i).toString() : "");
+        }
+    }
+
+    private void printMenu() {
         System.out.println("""
             1. добавить книгу <author> <title> <publishYear>
             2. найти книгу <title>
@@ -29,11 +44,11 @@ public class Menu {
         System.out.print("Выберите действие: ");
     }
 
-    private void selectMenu() {
+    private void selectAction() {
         while(true) {
             switch(inputNum("", "Неверно выбрано действие. Попробуйте снова: ")) {
                 case 1:
-                    inputBook();
+                    addBook();
                     break;
                 case 2:
                     findBook();
@@ -56,19 +71,7 @@ public class Menu {
         }
     }
 
-    private int inputNum(String label, String errMsg) {
-        if(label.length() > 0)
-            System.out.print(label);
-        while(true) {
-            try {
-                return Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException err) {
-                System.out.print(errMsg);
-            }
-        }
-    }
-
-    private void inputBook() {
+    private void addBook() {
         try {
             bookcase.add(new Book(inputString("Автор: "), inputString("Название: "),
                 inputNum("Год публикации: ", "Не верно задан год. Попробуйте снова: ")));
@@ -80,7 +83,8 @@ public class Menu {
     }
 
     private void deleteBookByIdx() {
-        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNumBooks() + "): ", "Введено не число. Попробуйте снова: ");
+        int idx = inputNum("Введите индекс книги (от 1 до " + bookcase.getNumBooks() + "): ",
+                "Введено не число. Попробуйте снова: ");
         try {
             bookcase.delete(idx - 1);
             System.out.print("Книга удалена. ");
@@ -100,12 +104,6 @@ public class Menu {
         inputEnter();
     }
 
-    private String inputString(String label) {
-        if(label.length() > 0)
-            System.out.print(label);
-        return scanner.nextLine();
-    }
-
     private void clearBookCase() {
         bookcase.clear();
         System.out.print("Шкаф очищен. ");
@@ -121,28 +119,28 @@ public class Menu {
         inputEnter();
     }
 
+    private String inputString(String label) {
+        if(label.length() > 0)
+            System.out.print(label);
+        return scanner.nextLine();
+    }
+
+    private int inputNum(String label, String errMsg) {
+        if(label.length() > 0)
+            System.out.print(label);
+        while(true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException err) {
+                System.out.print(errMsg);
+            }
+        }
+    }
+
     private void inputEnter() {
         System.out.print("Для продолжения работы нажмите Enter...");
         scanner.nextLine();
-        printCaseAndMenu();
-    }
-
-    private void printCaseAndMenu() {
         printCase();
-        print();
-    }
-
-    private void printCase() {
-        int numBooks = bookcase.getNumBooks();
-        int maxLengthInfo = bookcase.getMaxLengthInfo();
-        if(numBooks == 0) {
-            System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
-            return;
-        }
-        for(int i = 0; i <= numBooks; i++) {
-            if(i > 0)
-                System.out.print("|" + "-".repeat(maxLengthInfo) + "|\n");
-            System.out.printf("|%-" + maxLengthInfo + "s|\n", (i < numBooks) ? bookcase.get(i).toString() : "");
-        }
+        printMenu();
     }
 }
