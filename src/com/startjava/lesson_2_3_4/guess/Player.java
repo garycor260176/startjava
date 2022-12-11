@@ -7,6 +7,8 @@ public class Player {
     private int[] numbers;
     private int attempt;
 
+    private int wins;
+
     public Player(String name) {
         this.name = name;
         numbers = new int[GuessNumber.MAX_ATTEMPTS];
@@ -37,5 +39,13 @@ public class Player {
         }
         numbers[attempt++] = number;
         return true;
+    }
+
+    public void addWin() {
+        wins++;
+    }
+
+    public int getWins() {
+        return wins;
     }
 }
