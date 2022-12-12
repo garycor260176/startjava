@@ -41,7 +41,7 @@ public class Player {
         return true;
     }
 
-    public void addWin() {
+    public void incWin() {
         wins++;
     }
 
